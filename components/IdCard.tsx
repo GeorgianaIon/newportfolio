@@ -38,7 +38,11 @@ return <Grid item xs={3} sm={3} md={3} lg={3} className={classes.idCard}>
 
   <div className={classes.contact + ' ' + classes.downloadCV}>
     <DownloadIcon className={classes.icon}/>
-    <Typography variant="h6" >Download CV</Typography>
+    <Typography variant="h6" >
+      <a href="/pdfs/GeorgianaIonCV.pdf" download className={classes.downloadCVText}>
+        Download CV
+      </a>
+    </Typography>
   </div>
 </div>
 </Grid>
@@ -88,6 +92,10 @@ const useStyles = makeStyles()(() => ({
       downloadCV: {
         marginTop: '2rem',
         cursor: 'pointer'
+      },
+      downloadCVText: {
+        textDecoration: 'none',
+        color: Colors.white
       }
 }));
 
