@@ -5,6 +5,7 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
+import DownloadIcon from '@mui/icons-material/Download';
 
 interface Contact {
     icon: JSX.Element;
@@ -34,6 +35,11 @@ return <Grid item xs={3} sm={3} md={3} lg={3} className={classes.idCard}>
       <Typography variant="h6" className={classes.contactText}>{text}</Typography>
     </div>
   ))}
+
+  <div className={classes.contact + ' ' + classes.downloadCV}>
+    <DownloadIcon className={classes.icon}/>
+    <Typography variant="h6" >Download CV</Typography>
+  </div>
 </div>
 </Grid>
 }
@@ -52,7 +58,8 @@ const useStyles = makeStyles()(() => ({
       },
       contactText: {
         marginBottom: '0.2rem'
-      },  idCard: {
+      },  
+      idCard: {
         borderRight: '1px solid ' + Colors.darkPurple,
         backgroundColor: Colors.coldPurple,
         borderRadius: '1.25rem 0 0 1.25rem'
@@ -78,6 +85,10 @@ const useStyles = makeStyles()(() => ({
       profesion: {
         marginTop: '0.3rem'
       },
+      downloadCV: {
+        marginTop: '2rem',
+        cursor: 'pointer'
+      }
 }));
 
 
