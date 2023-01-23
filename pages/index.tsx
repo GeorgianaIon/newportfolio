@@ -7,16 +7,30 @@ import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import Navbar from '../components/Navbar'
 import IdCard from "../components/IdCard";
+import { textAlign } from "@mui/system";
+import SkillCard from "../components/SkillCard";
+
+interface Skill {
+  title: string;
+  image: string;
+}
 
 const Home: NextPage = () => {
   const { classes } = useStyles();
+
+  const skills = [
+    {title: 'Creative', image: '/images/skills-images/creativity.png'},
+    {title: 'Sociable', image: '/images/skills-images/talking.png'},
+    {title: 'Optimistic', image: '/images/skills-images/stay-positive.png'},
+    {title: 'Accountable', image: '/images/skills-images/daily-tasks.png'},
+    {title: 'Passioned', image: '/images/skills-images/quality-of-life.png'},
+  ]
 
   return (
       <>
         <IdCard />
 
-        <Grid item container xs={9} sm={9} md={9} lg={9} >
-          <div className={classes.homePageContainer}>
+        <Grid item container xs={9} sm={9} md={9} lg={9} className={classes.homePageContainer}>
                 <Navbar />
 
                 <div className={classes.presentationContainer}>
@@ -33,14 +47,24 @@ const Home: NextPage = () => {
                       </Typography>
                     </div>
                   </Grid>
-                  <div >
+                  <div className={classes.purpleLaptopContainer}>
                     {/* gif */}
                     <img className={classes.purpleLaptop}
                     src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif?cid=ecf05e47lsu67cnf1684060m1u2eyjnzrx914iko5dg8g6yr&rid=giphy.gif&ct=s"
                     alt="nice giphy"/>
                   </div>
                 </div>
-          </div> 
+
+                <Grid item container className={classes.skillsContainer}>
+                    {skills.map(({image, title}, index) => (
+                  <Grid item container xs={2} sm={2} md={2} lg={2} justifyContent={'center'}>
+                    <SkillCard
+                      key={index}
+                      skillImage={image}
+                      skillTitle={title} />
+                  </Grid>
+                      ))}
+                </Grid>
         </Grid>
         </>
 
@@ -60,7 +84,10 @@ const useStyles = makeStyles()(() => ({
   },
   homePageContainer:{
     padding: '1.75rem 4.25rem',
-    width:'100%'
+    paddingBottom: 0,
+    width:'100%',
+    height: '95vh',
+    flexDirection: 'column'
 
   },
   presentationContainer:{
@@ -68,7 +95,8 @@ const useStyles = makeStyles()(() => ({
     width: '100%',
     display: 'flex',
     borderRadius: '1.5rem',
-    marginTop: '4.8rem'
+    marginTop: '4.8rem',
+    height: '50%'
   },
   hi:{
     color: Colors.midPurple
@@ -84,16 +112,28 @@ const useStyles = makeStyles()(() => ({
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
   },
   presentationText: {
-    padding: '5.6rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   width: {
     width: '320px'
   },
   purpleLaptop: {
-    width: '80%',
+    width: '100%',
     height: '80%',
-    marginTop: '2rem'
-  }
+    marginTop: '2rem',
+  },
+  purpleLaptopContainer: {
+    marginRight: '3rem'
+  },
+  skillsContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexGrow: 1,
+    display: 'flex',
+  },
+
 }));
 
 export default Home;
