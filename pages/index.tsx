@@ -18,7 +18,7 @@ interface Skill {
 const Home: NextPage = () => {
   const { classes } = useStyles();
 
-  const skills = [
+  const skills: Skill[] = [
     {title: 'Creative', image: '/images/skills-images/creativity.png'},
     {title: 'Sociable', image: '/images/skills-images/talking.png'},
     {title: 'Optimistic', image: '/images/skills-images/stay-positive.png'},
