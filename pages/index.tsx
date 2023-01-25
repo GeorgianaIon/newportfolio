@@ -1,13 +1,9 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import Navbar from '../components/Navbar'
 import IdCard from "../components/IdCard";
-import { textAlign } from "@mui/system";
 import SkillCard from "../components/SkillCard";
 
 interface Skill {
@@ -55,14 +51,15 @@ const Home: NextPage = () => {
                   </div>
                 </div>
 
-                <Grid item container className={classes.skillsContainer}>
+                <Grid item  xs={12} sm={12} md={12} lg={12} className={classes.skillsContainer}>
                     {skills.map(({image, title}, index) => (
-                  <Grid item container xs={2} sm={2} md={2} lg={2} justifyContent={'center'}>
+                  // <Grid item container xs={2} sm={2} md={2} lg={2} className={classes.skillCard}>
                     <SkillCard
                       key={index}
                       skillImage={image}
-                      skillTitle={title} />
-                  </Grid>
+                      skillTitle={title} 
+                      />
+                  // </Grid>
                       ))}
                 </Grid>
         </Grid>
@@ -87,7 +84,7 @@ const useStyles = makeStyles()(() => ({
     paddingBottom: 0,
     width:'100%',
     height: '95vh',
-    flexDirection: 'column'
+    flexDirection: 'row'
 
   },
   presentationContainer:{
@@ -96,7 +93,12 @@ const useStyles = makeStyles()(() => ({
     display: 'flex',
     borderRadius: '1.5rem',
     marginTop: '4.8rem',
-    height: '50%'
+    height: '50%',
+    backgroundImage: 'url(/images/purpleCircle.png)',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'bottom left',
+    backgroundSize: '45%'
+
   },
   hi:{
     color: Colors.midPurple
@@ -132,8 +134,9 @@ const useStyles = makeStyles()(() => ({
     justifyContent: 'space-between',
     flexGrow: 1,
     display: 'flex',
+    marginTop: '1rem',
+    flexFlow: 'row wrap',
   },
-
 }));
 
 export default Home;

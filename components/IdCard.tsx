@@ -3,6 +3,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import DownloadIcon from '@mui/icons-material/Download';
@@ -21,13 +22,15 @@ const IdCard = () => {
         { icon: <PlaceOutlinedIcon className={classes.icon} />, text: "Horsens, Denmark" }
       ];
 
-return <Grid item xs={3} sm={3} md={3} lg={3} className={classes.idCard}>
+return <Grid item container xs={3} sm={3} md={3} lg={3} className={classes.idCard}>
+
 <div className={classes.profileSection}>
   <div className={classes.profilePic} />
 
   <Typography variant="h3">Georgiana Ion</Typography>
   <Typography variant="h5" className={classes.profesion}>Frontend Developer</Typography>
 </div>
+
 <div className={classes.contactSection}>
   {contacts.map(({ icon, text }, index) => (
     <div key={index} className={classes.contact}>
@@ -44,13 +47,25 @@ return <Grid item xs={3} sm={3} md={3} lg={3} className={classes.idCard}>
       </a>
     </Typography>
   </div>
+  <div className={classes.socialMedia}>
+    <a href='https://www.linkedin.com/in/georgiana-ion-84a888230/'>
+      <LinkedInIcon className={classes.socialMediaIcons}/>
+    </a>
+    <a href='https://github.com/GeorgianaIon'>
+      < GitHubIcon className={classes.socialMediaIcons}/>
+    </a>
+  </div>
 </div>
+
 </Grid>
 }
 
 const useStyles = makeStyles()(() => ({
     contactSection: {
         padding: '2rem',
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
       },
       contact:{
         display: 'flex',
@@ -66,7 +81,8 @@ const useStyles = makeStyles()(() => ({
       idCard: {
         borderRight: '1px solid ' + Colors.darkPurple,
         backgroundColor: Colors.coldPurple,
-        borderRadius: '1.25rem 0 0 1.25rem'
+        borderRadius: '1.25rem 0 0 1.25rem',
+        flexDirection: 'column'
       },
       profileSection: {
         height: '17rem',
@@ -96,6 +112,20 @@ const useStyles = makeStyles()(() => ({
       downloadCVText: {
         textDecoration: 'none',
         color: Colors.white
+      },
+      socialMedia: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'end',
+        flexGrow: 1,
+        '& > *': {
+          color: Colors.white,
+          cursor: 'pointer',
+        }
+      },
+      socialMediaIcons: {
+        width: '3.5rem',
+        height: '3.5rem'
       }
 }));
 
