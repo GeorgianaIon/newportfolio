@@ -35,9 +35,11 @@ export default function Layout({
 
 const useStyles = makeStyles()(() => ({
     body:{
+      '@media(min-width: 1200px)':{
         padding: '1rem',
         background: Colors.darkPurple,
         height: '100vh'
+      }
       },
       mainContainer: {
         borderRadius: '1.25rem',

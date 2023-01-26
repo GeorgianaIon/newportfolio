@@ -26,11 +26,11 @@ const Home: NextPage = () => {
       <>
         <IdCard />
 
-        <Grid item container xs={9} sm={9} md={9} lg={9} className={classes.homePageContainer}>
+        <Grid item container xs={12} sm={12} md={12} lg={9} className={classes.homePageContainer}>
                 <Navbar />
 
-                <div className={classes.presentationContainer}>
-                  <Grid item lg={8} className={classes.presentationText}>
+                <Grid item container xs={12} sm={12} md={12} lg={12} className={classes.presentationContainer}>
+                  <Grid item xs={12} sm={12} md={8} lg={8} className={classes.presentationText}>
                     <div className={classes.width}>
                       <Typography variant="h4" className={classes.hi}>
                         Hi, my name is
@@ -43,13 +43,13 @@ const Home: NextPage = () => {
                       </Typography>
                     </div>
                   </Grid>
-                  <div className={classes.purpleLaptopContainer}>
-                    {/* gif */}
+                  <Grid item xs={12} sm={12} md={4} lg={4} className={classes.purpleLaptopContainer}>
+                    {/* gif  */}
                     <img className={classes.purpleLaptop}
                     src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif?cid=ecf05e47lsu67cnf1684060m1u2eyjnzrx914iko5dg8g6yr&rid=giphy.gif&ct=s"
                     alt="nice giphy"/>
-                  </div>
-                </div>
+                  </Grid>
+                </Grid>
 
                 <Grid item  xs={12} sm={12} md={12} lg={12} className={classes.skillsContainer}>
                     {skills.map(({image, title}, index) => (
@@ -84,7 +84,10 @@ const useStyles = makeStyles()(() => ({
     paddingBottom: 0,
     width:'100%',
     height: '95vh',
-    flexDirection: 'row'
+    '@media(max-width:1200px)':{
+      height: '100vh',
+    },
+    flexDirection: 'row',
 
   },
   presentationContainer:{
@@ -92,42 +95,70 @@ const useStyles = makeStyles()(() => ({
     width: '100%',
     display: 'flex',
     borderRadius: '1.5rem',
-    marginTop: '4.8rem',
+    '@media(max-height: 650px)':{
+      marginTop: '4.8rem',
+    },
+    '@media(max-width: 900px)':{
+      height: '60%',
+      backgroundSize: '95%',
+      paddingTop: '2rem'
+    },
     height: '50%',
+
+    // paddingRight: '1rem',
     backgroundImage: 'url(/images/purpleCircle.png)',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'bottom left',
-    backgroundSize: '45%'
+    backgroundSize: '45%',
+    // flexDirection: 'column'
 
   },
   hi:{
-    color: Colors.midPurple
+    color: Colors.midPurple,
+    '@media(min-width: 1900px)':{
+      fontSize: '3rem'
+    }
   },
   whatIDo: {
     color: Colors.darkPurple,
     textAlign: 'right',
-    fontSize: '30px'
+    fontSize: '30px',
+    '@media(min-width: 1900px)':{
+      fontSize: '3.5rem'
+    }
   },
   myName: {
     color: Colors.darkPurple,
     fontWeight: '400',
-    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    '@media(min-width: 1900px)':{
+      fontSize: '5rem'
+    }
   },
   presentationText: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   width: {
-    width: '320px'
+    width: '20rem',
+    '@media(min-width: 1900px)':{
+      width: '35rem'
+    },
   },
   purpleLaptop: {
     width: '100%',
     height: '80%',
     marginTop: '2rem',
+    '@media(max-width: 1200px)':{
+      width: '70%',
+      height: '60%',
+    },
   },
   purpleLaptopContainer: {
-    marginRight: '3rem'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   skillsContainer: {
     alignItems: 'center',

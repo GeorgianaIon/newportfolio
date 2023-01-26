@@ -43,7 +43,10 @@ const useStyles = makeStyles()(() => ({
     fontWeight: '500',
     width: '7.7rem',
     textAlign: 'center',
-    marginTop: '0.6rem'
+    marginTop: '0.6rem',
+    '@media(min-width: 1900px)':{
+      fontSize: '2rem'
+    }
   },
   skill:{
     border: '3px solid ' + Colors.darkPurple,

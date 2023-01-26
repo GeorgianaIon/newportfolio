@@ -1,4 +1,6 @@
-import { Grid, Typography } from "@mui/material";
+import { Widgets } from "@mui/icons-material";
+import { Grid, Typography, useMediaQuery } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import { makeStyles } from "tss-react/mui";
@@ -11,6 +13,7 @@ interface Links {
 
 const Navbar = () => {
     const { classes } = useStyles();
+
     const links: Links[] = [
         { destination: '/home', link: '/'},
         { destination: '/skills', link: '/skills'},
@@ -19,13 +22,15 @@ const Navbar = () => {
         { destination: '/contact', link: '/contact'}
       ]
 
-    return <Grid container className={classes.headerContainer}>
+    return (
+    <Grid container className={classes.headerContainer}>
     {links.map(({destination, link}, index) => (
         <Link href={link} key={index}>
           <Typography className={classes.headerText} variant="h5">{destination}</Typography>
         </Link>
     ))}
   </Grid>
+  )
   };
 
 const useStyles = makeStyles()(() => ({
@@ -36,12 +41,15 @@ const useStyles = makeStyles()(() => ({
     background: Colors.coldPurple,
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     alignItems: 'center',
+    justifyContent: 'space-around'
 
   },
   headerText:{
-    margin: '0 4rem',
     cursor: 'pointer',
-    fontSize: '16px'
+    fontSize: '1rem',
+    '@media(min-width: 1900px)':{
+      fontSize: '1.6rem'
+    }
   }
 }));
 
