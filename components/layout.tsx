@@ -1,48 +1,34 @@
-import { Grid } from "@mui/material"
-import Head from "next/head";
+
+import { Box, Container } from "@mui/material";
 import { useRouter } from "next/router";
 import { ReactElement } from "react"
-import { makeStyles } from "tss-react/mui";
+import HomePageLayout from "./HomePageLayout";
 import { Colors } from "../constants/Colors";
+import { makeStyles } from "tss-react/mui";
+import PageTitle from "./PageTitle";
+import Navbar from "./Navbar";
+
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import SecondaryLayout from "./SecondaryLayout";
 
 export default function Layout({ 
     children
  }:{
     children: ReactElement
 }) {
-  const { classes } = useStyles();
   const router = useRouter();
-  const isHomePage = router.pathname === '/';
 
+  const isHomePage = router.pathname === '/';
   return (
-    <>
-    <Head>
-    <title>Portfolio</title>
-    </Head>
-    <Grid container className={classes.body}>
-      <Grid item container className={classes.mainContainer}>
-        {isHomePage ? 
-        (children)
-    :
-        (<h1>lala</h1>)
-        }
-      </Grid>
-    </Grid>
-    </>
-    
+    isHomePage 
+    ? 
+    <HomePageLayout>
+        {children}
+    </HomePageLayout>
+    : 
+    <SecondaryLayout>
+      {children}
+    </SecondaryLayout>
   )
 }
-
-const useStyles = makeStyles()(() => ({
-    body:{
-      '@media(min-width: 1200px)':{
-        padding: '1rem',
-        background: Colors.darkPurple,
-        height: '100vh'
-      }
-      },
-      mainContainer: {
-        borderRadius: '1.25rem',
-        background: Colors.white
-      },
-}));

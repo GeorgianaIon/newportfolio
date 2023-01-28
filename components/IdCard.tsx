@@ -27,6 +27,9 @@ const IdCard = () => {
         { icon: <PlaceOutlinedIcon className={classes.icon} />, text: "Horsens, Denmark" }
       ];
 
+    const toggleShowCard = () => {
+      setShowCard(prevShow => !prevShow)
+    }
     const Profile = () => {
       return (
       <>
@@ -73,7 +76,7 @@ return (
 
   <div >
       <motion.img 
-      onClick={() => setShowCard(prevShow => !prevShow)}
+      onClick={toggleShowCard}
       src='/images/woman.png' 
       animate={showCard ? {} : { y: [-7, 7] }}
       whileHover={{ scale: 1.2 }}
