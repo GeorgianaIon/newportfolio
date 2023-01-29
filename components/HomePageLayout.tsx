@@ -3,6 +3,7 @@ import { Grid, } from "@mui/material"
 import Head from "next/head";
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
+import theme from '../src/theme';
 
 function HomePageLayout({
   children
@@ -28,15 +29,15 @@ function HomePageLayout({
 
 const useStyles = makeStyles()(() => ({
   body:{
-    '@media(min-width: 1200px)':{
+    [theme.breakpoints.up('lg')]:{
       padding: '1rem',
       background: Colors.darkPurple,
       height: '100vh'
-    }
+    },
     },
     mainContainer: {
       borderRadius: '1.25rem',
-      background: Colors.white
+      background: Colors.white,
     },
 }));
 

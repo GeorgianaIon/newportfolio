@@ -5,6 +5,7 @@ import { Colors } from "../constants/Colors";
 import Navbar from '../components/Navbar'
 import IdCard from "../components/IdCard";
 import SkillCard from "../components/SkillCard";
+import theme from "../src/theme";
 
 interface Skill {
   title: string;
@@ -84,7 +85,7 @@ const useStyles = makeStyles()(() => ({
     paddingBottom: 0,
     width:'100%',
     height: '95vh',
-    '@media(max-width:1200px)':{
+    [theme.breakpoints.down('lg')]:{
       height: '100vh',
     },
     flexDirection: 'row',
@@ -94,11 +95,13 @@ const useStyles = makeStyles()(() => ({
     border: '1px solid ' + Colors.lightBlue,
     width: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
     borderRadius: '1.5rem',
     '@media(max-height: 650px)':{
       marginTop: '4.8rem',
     },
-    '@media(max-width: 900px)':{
+    [theme.breakpoints.down('md')]:{
       height: '60%',
       backgroundSize: '95%',
       paddingTop: '2rem'
@@ -115,7 +118,7 @@ const useStyles = makeStyles()(() => ({
   },
   hi:{
     color: Colors.midPurple,
-    '@media(min-width: 1900px)':{
+    [theme.breakpoints.up('largeScreen')]:{
       fontSize: '3rem'
     }
   },
@@ -123,7 +126,7 @@ const useStyles = makeStyles()(() => ({
     color: Colors.darkPurple,
     textAlign: 'right',
     fontSize: '30px',
-    '@media(min-width: 1900px)':{
+    [theme.breakpoints.up('largeScreen')]:{
       fontSize: '3.5rem'
     }
   },
@@ -131,7 +134,7 @@ const useStyles = makeStyles()(() => ({
     color: Colors.darkPurple,
     fontWeight: '400',
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    '@media(min-width: 1900px)':{
+    [theme.breakpoints.up('largeScreen')]:{
       fontSize: '5rem'
     }
   },
@@ -142,7 +145,7 @@ const useStyles = makeStyles()(() => ({
   },
   width: {
     width: '20rem',
-    '@media(min-width: 1900px)':{
+    [theme.breakpoints.up('largeScreen')]:{
       width: '35rem'
     },
   },
@@ -150,7 +153,7 @@ const useStyles = makeStyles()(() => ({
     width: '100%',
     height: '80%',
     marginTop: '2rem',
-    '@media(max-width: 1200px)':{
+    [theme.breakpoints.down('lg')]:{
       width: '70%',
       height: '60%',
     },

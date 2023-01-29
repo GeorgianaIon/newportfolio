@@ -10,6 +10,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion"
+import theme from "../src/theme";
 
 interface Contact {
     icon: JSX.Element;
@@ -18,7 +19,7 @@ interface Contact {
 
 const IdCard = () => {
     const { classes } = useStyles();
-    const isTabletScreen = useMediaQuery('(max-width: 1200px)');
+    const isTabletScreen = useMediaQuery(theme.breakpoints.down('lg'));
     const [showCard, setShowCard] = useState(false);
 
     const contacts: Contact[] = [
@@ -121,11 +122,14 @@ const useStyles = makeStyles()(() => ({
       icon: {
         color: Colors.white,
         marginRight: '0.5rem',
-
+        [theme.breakpoints.up('largeScreen')]:{
+          fontSize: '2rem',
+          marginBottom: '1rem'
+        }
       },
       contactText: {
         marginBottom: '0.2rem',
-        '@media(min-width: 1900px)':{
+        [theme.breakpoints.up('largeScreen')]:{
           fontSize: '1.7rem'
         }
       },  
@@ -158,7 +162,7 @@ const useStyles = makeStyles()(() => ({
       downloadCVText: {
         textDecoration: 'none',
         color: Colors.white,
-        '@media(min-width: 1900px)':{
+        [theme.breakpoints.up('largeScreen')]:{
           fontSize: '1.7rem'
         }
       },

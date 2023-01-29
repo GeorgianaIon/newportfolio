@@ -5,6 +5,7 @@ import Image from "next/image"
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
+import theme from "../src/theme";
 
 interface Props {
   skillTitle: string;
@@ -44,7 +45,7 @@ const useStyles = makeStyles()(() => ({
     width: '7.7rem',
     textAlign: 'center',
     marginTop: '0.6rem',
-    '@media(min-width: 1900px)':{
+    [theme.breakpoints.up('largeScreen')]:{
       fontSize: '2rem'
     }
   },
@@ -60,9 +61,6 @@ const useStyles = makeStyles()(() => ({
     justifyContent: 'center',
     AspectRatio: '1/1',
 
-    // alignItems: 'stretch',
-    // flexWrap: 'wrap',
-    // paddingTop: '100%'
   },
   skillContainer: {
     display: 'flex',
@@ -71,15 +69,6 @@ const useStyles = makeStyles()(() => ({
     justifyContent: 'center',
     width: '70%',
     flexBasis: '16%',
-    // AspectRatio: '1/1'
-    // paddingTop: '15%',
-    // '@media(min-height: 780px) & (max-width: 1800px)':{
-    //   height: '80%',
-    // },
-    // '@media(min-height: 970px) && media(max-width: 1800px)':{
-    //   height: '60%',
-    // },
-
 
   },
   image: {

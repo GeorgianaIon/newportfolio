@@ -1,19 +1,25 @@
-import { Widgets } from "@mui/icons-material";
-import { Grid, Typography, useMediaQuery } from "@mui/material";
-import Image from "next/image";
+import { Drawer, Grid, Typography, useMediaQuery } from "@mui/material";
 import Link from "next/link";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
+import { AnimatePresence, motion } from "framer-motion"
+import theme from "../src/theme";
 
 interface Links {
     destination: string,
     link: string
   }
 
-const Navbar = () => {
-    const { classes } = useStyles();
+const Navbar = ({
+  className
+}:{
+  className?:string
+}) => {
+    const isTabletScreen=useMediaQuery(theme.breakpoints.down('sm'));
 
+    const { classes } = useStyles();
+    const [activeMenu, setActiveMenu] = useState(false)
     const links: Links[] = [
         { destination: '/home', link: '/'},
         { destination: '/skills', link: '/skills'},
@@ -22,15 +28,38 @@ const Navbar = () => {
         { destination: '/contact', link: '/contact'}
       ]
 
-    return (
-    <Grid container className={classes.headerContainer}>
-    {links.map(({destination, link}, index) => (
-        <Link href={link} key={index}>
-          <Typography className={classes.headerText} variant="h5">{destination}</Typography>
-        </Link>
-    ))}
-  </Grid>
-  )
+      const toggleActiveMenu = () => {
+        setActiveMenu(currentState => !currentState)
+    }
+
+      const Menu = () => {
+        return <>
+        {links.map(({destination, link}, index) => (
+            <Link href={link} key={index}>
+              <Typography className={classes.headerText} variant="h5">{destination}</Typography>
+            </Link>
+        ))}
+      </>
+      }
+
+    return (isTabletScreen ? 
+    <>
+        <div className={classes.hamburgerDisplay} onClick={toggleActiveMenu} >
+          <div className={activeMenu ? classes.activeHamburger : classes.hamburger} />
+        </div>
+
+      <Drawer 
+      className={classes.menuDrawer}
+      anchor="right"
+      open={activeMenu}
+      onClose={toggleActiveMenu} >
+        <Menu />
+      </Drawer>
+    </>
+  :
+    <Grid container className={`${classes.headerContainer} ${className}`}>
+      <Menu />
+    </Grid>)
   };
 
 const useStyles = makeStyles()(() => ({
@@ -41,14 +70,98 @@ const useStyles = makeStyles()(() => ({
     background: Colors.coldPurple,
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     alignItems: 'center',
-    justifyContent: 'space-around'
-
+    justifyContent: 'space-evenly',
   },
   headerText:{
     cursor: 'pointer',
-    fontSize: '1rem',
-    '@media(min-width: 1900px)':{
-      fontSize: '1.6rem'
+    fontSize: '16px',
+    [theme.breakpoints.up('largeScreen')]:{
+      fontSize: '2rem',
+
+    },
+    [theme.breakpoints.down('sm')]:{
+      fontSize: '2rem',
+      fontWeight: 'bold',
+    }
+  },
+  hamburgerDisplay:{
+    display:'flex',
+    width:'100%',
+    alignItems:'center',
+    justifyContent:'end',
+    // ':hover':{
+    //     color: Colors.gray
+    // },
+},
+  activeHamburger: {
+    width: "1.6rem",
+    height: "0.188rem",
+    borderRadius: "0.313rem",
+    transform: "translateX(-3.125rem)",
+    background: "transparent",
+    transition: "all 0.5s ease-in-out",
+    marginBottom: '0.45rem',
+    zIndex: 443,
+    "&::before": {
+        content: "''",
+        position: "absolute",
+        width: "1.6rem",
+        height: "0.188rem",
+        background: Colors.darkPurple,
+        borderRadius: "0.313rem",
+        transition: "all 0.5s ease-in-out",
+        transform: "rotate(45deg) translate(2.188rem,-2.188rem)",
+    },
+        "&::after": {
+        content: "''",
+        position: "absolute",
+        width: "1.6rem",
+        height: "0.188rem",
+        background: Colors.darkPurple,
+        borderRadius: "0.313rem",
+        transition: "all 0.5s ease-in-out",
+        transform: "rotate(-45deg) translate(2.188rem, 2.188rem)",
+        },
+  },
+  hamburger: {
+    width: "1.6rem",
+    height: "0.188rem",
+    background: Colors.darkPurple,
+    borderRadius: "0.313rem",
+    boxshadow: "0 0.125rem 0.313rem rgb(255, 101, 47,.2)",
+    transition: "all 0.5s ease-in-out",
+    marginBottom: '0.45rem',
+    zIndex: 4,
+
+    "&:: before": {
+        content: "''",
+        position: "absolute",
+        width: "1.6rem",
+        height: "0.188rem",
+        background: Colors.darkPurple,
+        borderRadius: "0.313rem",
+        transition: "all 0.5s ease-in-out",
+        transform: "translateY(-0.625rem)",
+    },
+    "&:: after": {
+        content: "''",
+        position: "absolute",
+        width: "1.6rem",
+        height: "0.188rem",
+        background: Colors.darkPurple,
+        borderRadius: "0.313rem",
+        transition: "all 0.5s ease-in-out",
+        transform: "translateY(0.625rem)",
+    },
+},
+  menuDrawer: {
+    "& .MuiPaper-root": {
+      width: 300,
+      backgroundColor: Colors.coldPurple,
+      display: 'flex',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      zIndex: 1
     }
   }
 }));

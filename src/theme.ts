@@ -19,6 +19,12 @@ declare module '@mui/material/Typography/Typography' {
   }
 }
 
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    largeScreen: true;
+  }
+}
+
 export const theme = createTheme({
   components: {
     MuiButton: {
@@ -81,6 +87,16 @@ export const theme = createTheme({
     },
   },
 
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 650,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      largeScreen: 1900,
+    },
+  },
 });
 
 export default theme;

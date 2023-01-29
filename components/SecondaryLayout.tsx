@@ -36,7 +36,7 @@ const SecondaryLayout = ({
 
 const useStyles = makeStyles()((theme) => ({
   secondaryLayoutContainer:{
-    '@media(min-width: 1200px)':{
+    [theme.breakpoints.up('lg')]:{
     backgroundColor:Colors.darkPurple,
     height: '100vh',
     padding: '1.25rem',
