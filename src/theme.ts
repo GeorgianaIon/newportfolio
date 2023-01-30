@@ -22,10 +22,29 @@ declare module '@mui/material/Typography/Typography' {
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     largeScreen: true;
+    mobileScreen: true;
+    smallerScreen: true;
   }
 }
 
+const media = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      smallerScreen: 430,
+      mobileScreen: 530,
+      sm: 650,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      largeScreen: 1900,
+
+    }
+  }
+})
+
 export const theme = createTheme({
+  ...media,
   components: {
     MuiButton: {
       styleOverrides: {
@@ -55,27 +74,42 @@ export const theme = createTheme({
     h1: {
       fontSize: '100px',
       fontWeight: '700',
-      color: Colors.white
+      color: Colors.white,
+      [media.breakpoints.up('largeScreen')]: {
+        fontSize: '10rem',
+      }
     },
     h2: {
       fontSize: '60px',
       fontWeight: '300',
-      color: Colors.white
+      color: Colors.white,
+      [media.breakpoints.up('largeScreen')]: {
+        fontSize: '5rem'
+      }
     },
     h3: {
       fontSize: '32px',
       fontWeight: '300',
-      color: Colors.white
+      color: Colors.white,
+      [media.breakpoints.up('largeScreen')]: {
+        fontSize: '3.5rem'
+      }
     },
     h4: {
       fontSize: '28px',
       fontWeight: '300',
-      color: Colors.white
+      color: Colors.white,
+      [media.breakpoints.up('largeScreen')]: {
+        fontSize: '3rem'
+      }
     },
     h5: {
       fontSize: '20px',
       fontWeight: '300',
-      color: Colors.white
+      color: Colors.white,
+      [media.breakpoints.up('largeScreen')]: {
+        fontSize: '2rem'
+      }
     },
     h6: {
       fontSize: '18px',
@@ -87,16 +121,9 @@ export const theme = createTheme({
     },
   },
 
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 650,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-      largeScreen: 1900,
-    },
-  },
+
 });
+
+
 
 export default theme;

@@ -45,9 +45,7 @@ const useStyles = makeStyles()(() => ({
     width: '7.7rem',
     textAlign: 'center',
     marginTop: '0.6rem',
-    [theme.breakpoints.up('largeScreen')]:{
-      fontSize: '2rem'
-    }
+
   },
   skill:{
     border: '3px solid ' + Colors.darkPurple,
@@ -69,7 +67,9 @@ const useStyles = makeStyles()(() => ({
     justifyContent: 'center',
     width: '70%',
     flexBasis: '16%',
-
+    [theme.breakpoints.down('smallerScreen')]:{
+      margin: '1rem auto',
+    },
   },
   image: {
     position: "absolute",

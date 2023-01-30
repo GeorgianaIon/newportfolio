@@ -60,7 +60,7 @@ const Home: NextPage = () => {
                       skillImage={image}
                       skillTitle={title} 
                       />
-                  // </Grid>
+                  //  </Grid>
                       ))}
                 </Grid>
         </Grid>
@@ -70,25 +70,22 @@ const Home: NextPage = () => {
 };
 
 const useStyles = makeStyles()(() => ({
-
-  body:{
-    padding: '1rem',
-    background: Colors.darkPurple,
-    height: '100vh'
-  },
-  mainContainer: {
-    borderRadius: '1.25rem',
-    background: Colors.white
-  },
   homePageContainer:{
     padding: '1.75rem 4.25rem',
     paddingBottom: 0,
     width:'100%',
+    flexDirection: 'row',
     height: '95vh',
+
     [theme.breakpoints.down('lg')]:{
       height: '100vh',
     },
-    flexDirection: 'row',
+    [theme.breakpoints.down('mobileScreen')]:{
+      padding: '1rem 1.5rem',
+    },
+    '@media(max-height: 900)':{
+      marginTop: '2rem',
+    },
 
   },
   presentationContainer:{
@@ -98,17 +95,25 @@ const useStyles = makeStyles()(() => ({
     flexWrap: 'wrap',
     overflow: 'hidden',
     borderRadius: '1.5rem',
-    '@media(max-height: 650px)':{
-      marginTop: '4.8rem',
+    '@media(max-height: 800px)':{
+      marginTop: '2.8rem',
+    },
+    '@media(min-height: 1200px)':{
+      height: '60%',
     },
     [theme.breakpoints.down('md')]:{
-      height: '60%',
+      // height: '60%',
       backgroundSize: '95%',
       paddingTop: '2rem'
     },
-    height: '50%',
+    [theme.breakpoints.down('smallerScreen')]:{
+      padding: '3rem',
+      // height: '40%',
 
-    // paddingRight: '1rem',
+    },
+    [theme.breakpoints.up('lg')]:{
+      height: '50%',
+    },
     backgroundImage: 'url(/images/purpleCircle.png)',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'bottom left',
@@ -118,24 +123,24 @@ const useStyles = makeStyles()(() => ({
   },
   hi:{
     color: Colors.midPurple,
-    [theme.breakpoints.up('largeScreen')]:{
-      fontSize: '3rem'
+    [theme.breakpoints.down('smallerScreen')]:{
+      fontSize: '0.9rem'
     }
   },
   whatIDo: {
     color: Colors.darkPurple,
     textAlign: 'right',
-    fontSize: '30px',
-    [theme.breakpoints.up('largeScreen')]:{
-      fontSize: '3.5rem'
+    fontSize: '1.8rem',
+    [theme.breakpoints.down('smallerScreen')]:{
+      fontSize: '1rem'
     }
   },
   myName: {
     color: Colors.darkPurple,
     fontWeight: '400',
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    [theme.breakpoints.up('largeScreen')]:{
-      fontSize: '5rem'
+    [theme.breakpoints.down('smallerScreen')]:{
+      fontSize: '2rem'
     }
   },
   presentationText: {
@@ -157,6 +162,12 @@ const useStyles = makeStyles()(() => ({
       width: '70%',
       height: '60%',
     },
+    [theme.breakpoints.down('smallerScreen')]:{
+      width: '100%',
+      height: '80%',
+
+    },
+
   },
   purpleLaptopContainer: {
     display: 'flex',
@@ -170,7 +181,11 @@ const useStyles = makeStyles()(() => ({
     display: 'flex',
     marginTop: '1rem',
     flexFlow: 'row wrap',
+    [theme.breakpoints.down('smallerScreen')]:{
+      justifyContent: 'center',
+    },
   },
+
 }));
 
 export default Home;

@@ -8,7 +8,7 @@ import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import DownloadIcon from '@mui/icons-material/Download';
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion"
 import theme from "../src/theme";
 
@@ -21,12 +21,26 @@ const IdCard = () => {
     const { classes } = useStyles();
     const isTabletScreen = useMediaQuery(theme.breakpoints.down('lg'));
     const [showCard, setShowCard] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null)
 
     const contacts: Contact[] = [
         { icon: <LocalPhoneIcon className={classes.icon} />, text: "+45 93 97 88 73" },
         { icon: <MailOutlineIcon className={classes.icon} />, text: "ion.georgiana@hotmail.com" },
         { icon: <PlaceOutlinedIcon className={classes.icon} />, text: "Horsens, Denmark" }
       ];
+
+
+      useEffect(() => {
+        const clickedOutsideOfCard = (e: MouseEvent) => {
+            if(showCard && cardRef.current && !cardRef.current.contains(e.target as Node)){
+                toggleShowCard()
+            }
+        } 
+        document.addEventListener('mousedown', clickedOutsideOfCard)
+        return () => {
+            document.removeEventListener('mousedown', clickedOutsideOfCard)
+        }
+    }, [showCard])
 
     const toggleShowCard = () => {
       setShowCard(prevShow => !prevShow)
@@ -75,7 +89,7 @@ return (
   <>
   {isTabletScreen ?
 
-  <div >
+  <div ref={cardRef} >
       <motion.img 
       onClick={toggleShowCard}
       src='/images/woman.png' 
@@ -90,6 +104,7 @@ return (
       className={classes.imageButton}/>
 
       <motion.div
+      
       className={classes.tabletCardOpen + ' ' + classes.idCard}
       initial={{ x: "-100%" }}
       animate={{ x: showCard ? 0 : "-100%" }}
@@ -141,7 +156,10 @@ const useStyles = makeStyles()(() => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
+        [theme.breakpoints.up('largeScreen')]:{
+          height: '20rem',
+        }
       },
       profilePic: {
         borderRadius: '50%',

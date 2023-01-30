@@ -44,8 +44,8 @@ const Navbar = ({
 
     return (isTabletScreen ? 
     <>
-        <div className={classes.hamburgerDisplay} onClick={toggleActiveMenu} >
-          <div className={activeMenu ? classes.activeHamburger : classes.hamburger} />
+        <div className={classes.hamburgerDisplay} >
+          <div className={activeMenu ? classes.activeHamburger : classes.hamburger} onClick={toggleActiveMenu}/>
         </div>
 
       <Drawer 
@@ -75,10 +75,6 @@ const useStyles = makeStyles()(() => ({
   headerText:{
     cursor: 'pointer',
     fontSize: '16px',
-    [theme.breakpoints.up('largeScreen')]:{
-      fontSize: '2rem',
-
-    },
     [theme.breakpoints.down('sm')]:{
       fontSize: '2rem',
       fontWeight: 'bold',
@@ -89,6 +85,7 @@ const useStyles = makeStyles()(() => ({
     width:'100%',
     alignItems:'center',
     justifyContent:'end',
+    height: '4rem',
     // ':hover':{
     //     color: Colors.gray
     // },
