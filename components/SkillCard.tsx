@@ -9,10 +9,11 @@ import theme from "../src/theme";
 
 interface Props {
   skillTitle: string;
-  skillImage: string
+  skillImage: string;
+  skillsPage?: boolean;
 }
 
-const SkillCard: FunctionComponent<Props> = ({skillImage, skillTitle}) => {
+const SkillCard: FunctionComponent<Props> = ({skillImage, skillTitle, skillsPage}) => {
   const { classes } = useStyles();
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -27,13 +28,13 @@ const SkillCard: FunctionComponent<Props> = ({skillImage, skillTitle}) => {
 
 
     return <>
-    <div ref={divRef} className={classes.skillContainer}>
+    <div ref={divRef} className={skillsPage ? classes.skillContainerSkillsPage : classes.skillContainerHome}>
       <div className={classes.skill} >
         <div className={classes.imageContainer}>
           <Image src={skillImage} className={classes.image} objectFit="contain" layout="fill" />
         </div>
       </div>
-    <Typography variant="h5" className={classes.skillText}>{skillTitle}</Typography>
+      <Typography variant="h5" className={classes.skillText}>{skillTitle}</Typography>
     </div>
     </>
 }
@@ -42,10 +43,11 @@ const useStyles = makeStyles()(() => ({
   skillText: {
     color: Colors.darkPurple,
     fontWeight: '500',
-    width: '7.7rem',
+    width: '100%',
     textAlign: 'center',
     marginTop: '0.6rem',
-
+    whiteSpace: 'nowrap',
+    border: '1px solid blue'
   },
   skill:{
     border: '3px solid ' + Colors.darkPurple,
@@ -60,7 +62,7 @@ const useStyles = makeStyles()(() => ({
     AspectRatio: '1/1',
 
   },
-  skillContainer: {
+  skillContainerHome: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -70,6 +72,19 @@ const useStyles = makeStyles()(() => ({
     [theme.breakpoints.down('smallerScreen')]:{
       margin: '1rem auto',
     },
+  },
+  skillContainerSkillsPage: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '70%',
+    [theme.breakpoints.down('smallerScreen')]:{
+      margin: '1rem auto',
+    },
+    flexBasis: 'calc(23%)',
+    margin: '0.3rem 1.9rem',
+    border: '1px solid red'
   },
   image: {
     position: "absolute",

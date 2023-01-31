@@ -15,12 +15,12 @@ interface Skill {
 const Home: NextPage = () => {
   const { classes } = useStyles();
 
-  const skills: Skill[] = [
-    {title: 'Creative', image: '/images/skills-images/creativity.png'},
-    {title: 'Sociable', image: '/images/skills-images/talking.png'},
-    {title: 'Optimistic', image: '/images/skills-images/stay-positive.png'},
-    {title: 'Accountable', image: '/images/skills-images/daily-tasks.png'},
-    {title: 'Passioned', image: '/images/skills-images/quality-of-life.png'},
+  const skillsArray: Skill[] = [
+    {title: 'Creative', image: '/images/skills-images/soft-skills/creativity.png'},
+    {title: 'Sociable', image: '/images/skills-images/soft-skills/talking.png'},
+    {title: 'Optimistic', image: '/images/skills-images/soft-skills/stay-positive.png'},
+    {title: 'Accountable', image: '/images/skills-images/soft-skills/daily-tasks.png'},
+    {title: 'Passioned', image: '/images/skills-images/soft-skills/quality-of-life.png'},
   ]
 
   return (
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
                 </Grid>
 
                 <Grid item  xs={12} sm={12} md={12} lg={12} className={classes.skillsContainer}>
-                    {skills.map(({image, title}, index) => (
+                    {skillsArray.map(({image, title}, index) => (
                   // <Grid item container xs={2} sm={2} md={2} lg={2} className={classes.skillCard}>
                     <SkillCard
                       key={index}
@@ -63,6 +63,7 @@ const Home: NextPage = () => {
                   //  </Grid>
                       ))}
                 </Grid>
+
         </Grid>
         </>
 
@@ -114,7 +115,7 @@ const useStyles = makeStyles()(() => ({
     [theme.breakpoints.up('lg')]:{
       height: '50%',
     },
-    backgroundImage: 'url(/images/purpleCircle.png)',
+    backgroundImage: 'url(/images/elipse/purpleCircle.png)',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'bottom left',
     backgroundSize: '45%',

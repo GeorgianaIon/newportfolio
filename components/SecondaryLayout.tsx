@@ -1,10 +1,11 @@
-import { Box, Container,  } from '@mui/material'
+import { Box, Container, Grid,  } from '@mui/material'
 import React from 'react'
 import { Colors } from '../constants/Colors'
 import Navbar from './Navbar'
 import PageTitle from './PageTitle'
 import {makeStyles} from 'tss-react/mui'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const SecondaryLayout = ({
   children
@@ -15,10 +16,14 @@ const SecondaryLayout = ({
   const router = useRouter();
 
   return (
-    <Box
+    <>
+    <Head>
+    <title>Portfolio</title>
+    </Head>
+    <Grid container
     className={classes.secondaryLayoutContainer}
     >
-      <Box
+      <Grid item container
       className={classes.secondaryLayoutInnerContainer}
       >
         <Box className={classes.headerContainer}>
@@ -28,8 +33,9 @@ const SecondaryLayout = ({
         <Box className={classes.bodyContainer}>
           {children}
         </Box>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
+    </>
   )
 }
 
@@ -40,6 +46,9 @@ const useStyles = makeStyles()((theme) => ({
     backgroundColor:Colors.darkPurple,
     height: '100vh',
     padding: '1.25rem',
+    // '@media(min-height: 100vh)': {
+    //   height: '100%',
+    // }
     }
   },
   secondaryLayoutInnerContainer:{
@@ -68,7 +77,6 @@ const useStyles = makeStyles()((theme) => ({
   bodyContainer:{
     flexBasis:'100%',
     backgroundColor: Colors.midPurple,
-    padding: '2rem',
     borderRadius: '1rem',
   }
 }));
