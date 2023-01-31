@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react'
 import { makeStyles } from 'tss-react/mui';
 import { Colors } from '../constants/Colors';
+import theme from '../src/theme';
 
 const PageTitle = ({
   title,
@@ -41,6 +42,9 @@ const useStyles = makeStyles()(() => ({
     fontSize: '2em',
     borderRadius: '1rem',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+    [theme.breakpoints.down('sm')]:{
+      padding: '0 2rem',
+    },
   },
 }));
 

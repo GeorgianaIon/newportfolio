@@ -41,7 +41,7 @@ const softSkills: Skill[] = [
   return (
     <Grid item container className={classes.skillsContainer}>
 
-      <Grid item container xs={6} sm={6} md={6} lg={6} className={classes.hardSkillsContainer}>
+      <Grid item container xs={12} sm={12} md={6} lg={6} className={classes.hardSkillsContainer}>
         <Grid item >
             <Typography variant='h1' className={classes.title + ' ' + classes.hardTitleColor}>Hard Skills</Typography>
         </Grid>
@@ -59,7 +59,7 @@ const softSkills: Skill[] = [
 
       </Grid>
 
-      <Grid item container xs={6} sm={6} md={6} lg={6} className={classes.softSkillsContainer}>
+      <Grid item container xs={12} sm={12} md={6} lg={6} className={classes.softSkillsContainer}>
         <Grid item >
             <Typography variant='h1' className={classes.title + ' ' + classes.softTitleColor }>Soft Skills</Typography>
         </Grid>
@@ -85,13 +85,17 @@ const useStyles = makeStyles()(() => ({
     width: '100%',
     height: '100%',
     borderRadius: '1rem',
+  },
+  hardSkillsContainer:{
+    justifyContent: 'center',
     backgroundImage: 'url(/images/elipse/pink-elipse.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '28%',
     backgroundPosition: 'top left',
-  },
-  hardSkillsContainer:{
-    justifyContent: 'center',
+    borderRadius: '1rem 0 0 0',
+    [theme.breakpoints.down('sm')]:{
+      backgroundSize: '58%',
+    },
   },
   softSkillsContainer:{
     justifyContent: 'center',
@@ -105,7 +109,9 @@ const useStyles = makeStyles()(() => ({
   },
   title: {
     fontWeight: 300,
-
+    [theme.breakpoints.down('sm')]:{
+      marginTop: '1rem'
+    }
   },
   skillsCardContainer: {
   alignItems: 'center',

@@ -58,9 +58,6 @@ const useStyles = makeStyles()((theme) => ({
     height: '100%',
     padding: '1.5rem',
     borderRadius: '1.5rem',
-    [theme.breakpoints.only('xs')]: {
-      backgroundColor: 'red',
-    },
   },
   headerContainer:{
     display: 'flex',

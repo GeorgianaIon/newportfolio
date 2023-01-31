@@ -137,14 +137,14 @@ const useStyles = makeStyles()(() => ({
       icon: {
         color: Colors.white,
         marginRight: '0.5rem',
-        [theme.breakpoints.up('largeScreen')]:{
+        [theme.breakpoints.up('ultraWide')]:{
           fontSize: '2rem',
           marginBottom: '1rem'
         }
       },
       contactText: {
         marginBottom: '0.2rem',
-        [theme.breakpoints.up('largeScreen')]:{
+        [theme.breakpoints.up('ultraWide')]:{
           fontSize: '1.7rem'
         }
       },  
@@ -157,7 +157,7 @@ const useStyles = makeStyles()(() => ({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        [theme.breakpoints.up('largeScreen')]:{
+        [theme.breakpoints.up('ultraWide')]:{
           height: '20rem',
         }
       },
@@ -180,7 +180,7 @@ const useStyles = makeStyles()(() => ({
       downloadCVText: {
         textDecoration: 'none',
         color: Colors.white,
-        [theme.breakpoints.up('largeScreen')]:{
+        [theme.breakpoints.up('ultraWide')]:{
           fontSize: '1.7rem'
         }
       },

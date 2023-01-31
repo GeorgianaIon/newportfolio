@@ -26,7 +26,6 @@ const SkillCard: FunctionComponent<Props> = ({skillImage, skillTitle, skillsPage
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
     return <>
     <div ref={divRef} className={skillsPage ? classes.skillContainerSkillsPage : classes.skillContainerHome}>
       <div className={classes.skill} >
@@ -47,7 +46,12 @@ const useStyles = makeStyles()(() => ({
     textAlign: 'center',
     marginTop: '0.6rem',
     whiteSpace: 'nowrap',
-    border: '1px solid blue'
+    [theme.breakpoints.down('lg')]:{
+      width: '7rem'
+    },
+    [theme.breakpoints.down('extraSmallScreen')]: {
+      fontSize: '1rem',
+    }
   },
   skill:{
     border: '3px solid ' + Colors.darkPurple,
@@ -82,9 +86,11 @@ const useStyles = makeStyles()(() => ({
     [theme.breakpoints.down('smallerScreen')]:{
       margin: '1rem auto',
     },
-    flexBasis: 'calc(23%)',
+    '@media(min-width: 384px) and (max-width: 400px)': {
+      margin: '0.3rem 1rem',
+    },
+    flexBasis: '23%',
     margin: '0.3rem 1.9rem',
-    border: '1px solid red'
   },
   image: {
     position: "absolute",

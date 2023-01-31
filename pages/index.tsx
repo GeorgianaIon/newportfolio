@@ -151,7 +151,7 @@ const useStyles = makeStyles()(() => ({
   },
   width: {
     width: '20rem',
-    [theme.breakpoints.up('largeScreen')]:{
+    [theme.breakpoints.up('ultraWide')]:{
       width: '35rem'
     },
   },

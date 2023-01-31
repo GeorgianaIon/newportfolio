@@ -21,9 +21,11 @@ declare module '@mui/material/Typography/Typography' {
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
-    largeScreen: true;
+    ultraWide: true;
     mobileScreen: true;
     smallerScreen: true;
+    mediumTablet: true;
+    extraSmallScreen: true;
   }
 }
 
@@ -31,13 +33,17 @@ const media = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      smallerScreen: 430,
-      mobileScreen: 530,
       sm: 650,
       md: 900,
       lg: 1200,
       xl: 1536,
-      largeScreen: 1900,
+
+      // custom breakpoints
+      extraSmallScreen: 450,
+      smallerScreen: 430,
+      mobileScreen: 530,
+      mediumTablet: 800,
+      ultraWide: 1900,
 
     }
   }
@@ -75,15 +81,21 @@ export const theme = createTheme({
       fontSize: '100px',
       fontWeight: '700',
       color: Colors.white,
-      [media.breakpoints.up('largeScreen')]: {
+      [media.breakpoints.up('ultraWide')]: {
         fontSize: '10rem',
+      },
+      [media.breakpoints.down('mediumTablet')]: {
+        fontSize: '4rem',
+      },
+      [media.breakpoints.down('extraSmallScreen')]: {
+        fontSize: '3rem',
       }
     },
     h2: {
       fontSize: '60px',
       fontWeight: '300',
       color: Colors.white,
-      [media.breakpoints.up('largeScreen')]: {
+      [media.breakpoints.up('ultraWide')]: {
         fontSize: '5rem'
       }
     },
@@ -91,7 +103,7 @@ export const theme = createTheme({
       fontSize: '32px',
       fontWeight: '300',
       color: Colors.white,
-      [media.breakpoints.up('largeScreen')]: {
+      [media.breakpoints.up('ultraWide')]: {
         fontSize: '3.5rem'
       }
     },
@@ -99,7 +111,7 @@ export const theme = createTheme({
       fontSize: '28px',
       fontWeight: '300',
       color: Colors.white,
-      [media.breakpoints.up('largeScreen')]: {
+      [media.breakpoints.up('ultraWide')]: {
         fontSize: '3rem'
       }
     },
@@ -107,7 +119,7 @@ export const theme = createTheme({
       fontSize: '20px',
       fontWeight: '300',
       color: Colors.white,
-      [media.breakpoints.up('largeScreen')]: {
+      [media.breakpoints.up('ultraWide')]: {
         fontSize: '2rem'
       }
     },
