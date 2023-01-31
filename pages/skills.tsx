@@ -90,7 +90,7 @@ const useStyles = makeStyles()(() => ({
     justifyContent: 'center',
     backgroundImage: 'url(/images/elipse/pink-elipse.png)',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '28%',
+    backgroundSize: '48%',
     backgroundPosition: 'top left',
     borderRadius: '1rem 0 0 0',
     [theme.breakpoints.down('sm')]:{
