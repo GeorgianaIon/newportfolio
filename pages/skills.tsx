@@ -37,6 +37,20 @@ const softSkills: Skill[] = [
   {title: 'Detail Oriented', image: '/images/skills-images/soft-skills/detail-oriented.png'},
 ]
 
+const RenderSkills = (skills: Skill[]) => {
+  return (
+    <Grid item container xs={12} sm={12} md={12} lg={12} className={classes.skillsCardContainer}>
+      {skills.map(({image, title}, index) => (
+        <SkillCard
+          key={index}
+          skillImage={image}
+          skillTitle={title} 
+          skillsPage={true}
+        />
+      ))}
+    </Grid>
+  );
+};
 
   return (
     <Grid item container className={classes.skillsContainer}>
@@ -46,16 +60,7 @@ const softSkills: Skill[] = [
             <Typography variant='h1' className={classes.title + ' ' + classes.hardTitleColor}>Hard Skills</Typography>
         </Grid>
 
-        <Grid item container xs={12} sm={12} md={12} lg={12} className={classes.skillsCardContainer}  >
-            {hardSkills.map(({image, title}, index) => (
-            <SkillCard
-              key={index}
-              skillImage={image}
-              skillTitle={title} 
-              skillsPage={true}
-              />
-              ))}
-        </Grid>
+        {RenderSkills(hardSkills)}
 
       </Grid>
 
@@ -64,16 +69,7 @@ const softSkills: Skill[] = [
             <Typography variant='h1' className={classes.title + ' ' + classes.softTitleColor }>Soft Skills</Typography>
         </Grid>
 
-        <Grid item container xs={12} sm={12} md={12} lg={12} className={classes.skillsCardContainer}  >
-            {softSkills.map(({image, title}, index) => (
-            <SkillCard
-              key={index}
-              skillImage={image}
-              skillTitle={title} 
-              skillsPage={true}
-              />
-              ))}
-        </Grid>
+        {RenderSkills(softSkills)}
       </Grid>
 
     </Grid>
