@@ -108,9 +108,6 @@ const useStyles = makeStyles()(() => ({
 
   },
   skillsCardContainer: {
-  // flexGrow: 1,
-  // alignItems: 'stretch',
-  // height: '80%',
   alignItems: 'center',
   justifyContent: 'center',
   flexGrow: 1,
