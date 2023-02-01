@@ -45,7 +45,8 @@ const useStyles = makeStyles()((theme) => ({
     [theme.breakpoints.up('lg')]:{
     backgroundColor:Colors.darkPurple,
     height: '100vh',
-    padding: '1.25rem',
+    padding: '1.25rem 1.25rem 5vh 1.25rem',
+    // minHeight: '100vh',
     // '@media(min-height: 100vh)': {
     //   height: '100%',
     // }
@@ -58,6 +59,7 @@ const useStyles = makeStyles()((theme) => ({
     height: '100%',
     padding: '1.5rem',
     borderRadius: '1.5rem',
+
   },
   headerContainer:{
     display: 'flex',
@@ -73,7 +75,7 @@ const useStyles = makeStyles()((theme) => ({
   },
   bodyContainer:{
     flexBasis:'100%',
-    backgroundColor: Colors.midPurple,
+    backgroundColor: Colors.coldPurple,
     borderRadius: '1rem',
   }
 }));

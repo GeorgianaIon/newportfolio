@@ -55,21 +55,19 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         contained: {
-          //css here
-
+          backgroundColor: Colors.lightPurple,
+          color: Colors.darkPurple,
+          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          borderRadius: '1.25rem',
+          fontSize: '1.5rem',
+          padding: '0.5rem 1.5rem',
+          transition: 'background-color 0.5s ease-in-out',
+          '&:hover': {
+            backgroundColor: Colors.darkPurple,
+            color: Colors.lightPurple,
+          },
         },
-        outlined: {
-          //css here
 
-        },
-        outlinedInfo: {
-          //css here
-
-        },
-        text: {
-          //css here
-
-        },
       },
     },
   },
@@ -79,7 +77,7 @@ export const theme = createTheme({
 
     h1: {
       fontSize: '100px',
-      fontWeight: '700',
+      fontWeight: '300',
       color: Colors.white,
       [media.breakpoints.up('ultraWide')]: {
         fontSize: '10rem',

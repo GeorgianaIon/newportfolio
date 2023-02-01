@@ -70,6 +70,7 @@ const RenderSkills = (skills: Skill[]) => {
         </Grid>
 
         {RenderSkills(softSkills)}
+
       </Grid>
 
     </Grid>
@@ -104,7 +105,7 @@ const useStyles = makeStyles()(() => ({
 
   },
   title: {
-    fontWeight: 300,
+    fontWeight: 200,
     [theme.breakpoints.down('sm')]:{
       marginTop: '1rem'
     }
