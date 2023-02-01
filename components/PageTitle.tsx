@@ -45,6 +45,8 @@ const useStyles = makeStyles()(() => ({
     [theme.breakpoints.down('sm')]:{
       padding: '0 2rem',
     },
+    whiteSpace: 'nowrap',
+
   },
 }));
 

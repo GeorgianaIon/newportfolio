@@ -80,7 +80,7 @@ const RenderSkills = (skills: Skill[]) => {
 const useStyles = makeStyles()(() => ({
   skillsContainer:{
     width: '100%',
-    height: '100%',
+    // height: '100%',
     borderRadius: '1rem',
   },
   hardSkillsContainer:{

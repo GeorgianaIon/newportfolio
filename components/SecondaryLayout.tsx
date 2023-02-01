@@ -44,12 +44,8 @@ const useStyles = makeStyles()((theme) => ({
   secondaryLayoutContainer:{
     [theme.breakpoints.up('lg')]:{
     backgroundColor:Colors.darkPurple,
-    height: '100vh',
+    height: '100%',
     padding: '1.25rem 1.25rem 5vh 1.25rem',
-    // minHeight: '100vh',
-    // '@media(min-height: 100vh)': {
-    //   height: '100%',
-    // }
     }
   },
   secondaryLayoutInnerContainer:{
@@ -77,6 +73,7 @@ const useStyles = makeStyles()((theme) => ({
     flexBasis:'100%',
     backgroundColor: Colors.coldPurple,
     borderRadius: '1rem',
+
   }
 }));
 

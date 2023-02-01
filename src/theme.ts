@@ -26,6 +26,8 @@ declare module '@mui/material/styles' {
     smallerScreen: true;
     mediumTablet: true;
     extraSmallScreen: true;
+    small480: true;
+    small380: true;
   }
 }
 
@@ -39,8 +41,10 @@ const media = createTheme({
       xl: 1536,
 
       // custom breakpoints
-      extraSmallScreen: 450,
+      small380: 380,
       smallerScreen: 430,
+      extraSmallScreen: 450,
+      small480: 480,
       mobileScreen: 530,
       mediumTablet: 800,
       ultraWide: 1900,
@@ -62,6 +66,7 @@ export const theme = createTheme({
           fontSize: '1.5rem',
           padding: '0.5rem 1.5rem',
           transition: 'background-color 0.5s ease-in-out',
+          height: '4.8rem',
           '&:hover': {
             backgroundColor: Colors.darkPurple,
             color: Colors.lightPurple,
