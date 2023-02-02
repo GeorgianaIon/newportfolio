@@ -67,6 +67,7 @@ export const theme = createTheme({
           padding: '0.5rem 1.5rem',
           transition: 'background-color 0.5s ease-in-out',
           height: '4.8rem',
+          minWidth: '9rem',
           '&:hover': {
             backgroundColor: Colors.darkPurple,
             color: Colors.lightPurple,

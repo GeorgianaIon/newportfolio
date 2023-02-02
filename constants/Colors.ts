@@ -6,5 +6,6 @@ export const Colors = {
     coldPurple: '#A6B1E1',
     darkPurple: '#424874',
     midPurple: '#929FD6',
-    white: '#FCFCFF'
+    white: '#FCFCFF',
+    red: '#D61355'
 }
