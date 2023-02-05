@@ -92,7 +92,7 @@ return (
   <div ref={cardRef} >
       <motion.img 
       onClick={toggleShowCard}
-      src='/images/woman.png' 
+      src='/images/woman.webp' 
       animate={showCard ? {} : { y: [-7, 7] }}
       whileHover={{ scale: 1.2 }}
       transition={showCard ? {} : {          
@@ -165,7 +165,7 @@ const useStyles = makeStyles()(() => ({
         borderRadius: '50%',
         width: '8.3rem',
         height: '8.3rem',
-        backgroundImage: 'url(/images/GrayPhoto.png)',
+        backgroundImage: 'url(/images/gray-photo.webp)',
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
         marginBottom: '1rem'
