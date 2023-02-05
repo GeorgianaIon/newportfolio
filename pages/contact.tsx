@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Colors } from '../constants/Colors'
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import sgMail from "@sendgrid/mail"
+import { maxWidth } from '@mui/system';
 
 
 interface EmailData {
@@ -26,7 +27,6 @@ const {
 
 const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
   console.log(data);
-  // sendEmail(data);
   try {
     const response = await fetch('/api/send-mail', {
       method: 'POST',
@@ -36,53 +36,34 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    return result;
-    console.log(result);
+    console.log('RESULT:', result);
   } catch (error) {
     console.log(error)
   } 
 };
 
-// const sgMail = require('@sendgrid/mail')
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-// const sendEmail = async (data: EmailData) => {
-//   const { email, subject, message } = data;
-//   const msg = {
-//     to: 'ion.georgiana@hotmail.com',
-//     from: email,
-//     subject: subject,
-//     text: message,
-//   };
-//   try {
-//     await sgMail.send(msg).then(() => {
-//       console.log('Email sent');});
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
   return (
     <Grid container className={classes.contactPage}>
       
-      <Grid item container xs={12} sm={12} md={6} lg={6} className={classes.callForAction}>
-        <Grid item>
-          <Typography variant="h1" className={classes.title}>Let's join forces</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant="h5" className={classes.text}>Please feel free to reach out to me if you have any feedback on my work or are interested in collaborating.</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant="h5" className={classes.text}>I look forward to hearing from you.</Typography>
-        </Grid>
+      <Grid item container xs={12} sm={12} md={12} lg={6} className={classes.callForAction}>
+        <div>
+            <Typography variant="h1" className={classes.title}>Let's join forces</Typography>
+            <Typography variant="h5" className={classes.text}>Please feel free to reach out to me if you have any feedback on my work or are interested in collaborating.</Typography>
+            <Typography variant="h5" className={classes.text}>I look forward to hearing from you.</Typography>
+        </div>
       </Grid>
 
-      <Grid item xs={12} sm={12} md={6} lg={6} className={classes.contactFormContainer}>
+      <Grid item xs={12} sm={12} md={12} lg={6} className={classes.contactFormContainer}>
         <form onSubmit={handleSubmit(submit)} className={classes.form}>
-          <Grid item>
+          <Grid item className={classes.fieldContainer}>
             <Typography variant="h5" className={classes.formText}>Your Email</Typography>
             <TextField 
-              className={classes.textField} 
+              className={classes.textField + ' ' + classes.textFieldHeight} 
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               {...register("email", { 
                 required: 'Email is required',
                 pattern: {
@@ -98,10 +79,15 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
                 </Typography>
               )}
           </Grid>
-          <Grid item>
+          <Grid item className={classes.fieldContainer}>
             <Typography variant="h5" className={classes.formText}>Subject</Typography>
             <TextField 
-              className={classes.textField} 
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
+              className={classes.textField + ' ' + classes.textFieldHeight} 
               {...register("subject", { required: 'Subject is required' })}
               />
               {errors.subject && (
@@ -110,9 +96,14 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
                 </Typography>
               )}
           </Grid>
-          <Grid item>
+          <Grid item className={classes.fieldContainer}>
             <Typography variant="h5" className={classes.formText}>Message</Typography>
             <TextField 
+              InputProps={{
+                classes: {
+                  input: classes.resize,
+                },
+              }}
               multiline
               rows={6}
               className={classes.textField} 
@@ -125,7 +116,7 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
               )}
           </Grid>
 
-          <Grid item>
+          <Grid item style={{margin: 'auto 0'}}>
             <Button type="submit" variant="contained" startIcon={<SendRoundedIcon />} className={classes.button}>Send</Button>
           </Grid>
         </form>
@@ -137,14 +128,17 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
 
 const useStyles = makeStyles()(() => ({
   contactPage:{
-
+    height: '100%'
   },
   callForAction:{
-    padding: '3rem 4.3rem'
+    padding: '3rem 4.3rem',
   },
-  form:{},
+  form:{
+
+  },
   contactFormContainer:{
-    padding: '1.9rem 3.4rem'
+    padding: '1.9rem 3.4rem',
+    // height: '80vh'
   },
   input:{},
   textarea:{},
@@ -156,7 +150,9 @@ const useStyles = makeStyles()(() => ({
     fontStyle: 'italic',
   },
   text:{
-
+    margin: '5% 0',
+    maxWidth: '70%',
+    lineHeight: 1.6
   },
   formText: {
     margin: '1rem 0',
@@ -167,7 +163,18 @@ const useStyles = makeStyles()(() => ({
     backgroundColor: Colors.white,
     '.MuiOutlinedInput-notchedOutline': {
       border: 'none',
-   }
+   },
+  },
+  resize: {
+     fontSize: '2.5vh'
+  },
+  textFieldHeight: {
+    height: '7vh',
+  },
+  fieldContainer: {
+    '@media (min-height: 1000px)': {
+      margin: '5% 0'
+    }
   }
 }));
 

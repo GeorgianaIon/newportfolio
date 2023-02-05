@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Grid, } from "@mui/material"
 import Head from "next/head";
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import theme from '../src/theme';
 
-function HomePageLayout({
-  children
-}:{
+interface Props {
   children: React.ReactElement
-}) {
+}
+
+const HomePageLayout: FunctionComponent<Props> = ({children}) => {
   const { classes } = useStyles();
 
   return (

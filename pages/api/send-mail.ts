@@ -14,7 +14,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             text: message,
             html: "<h1>Test</h1>"
         };
-        console.log(msg)
         try {
             await sgMail.send(msg).then(() => {
                 console.log('Email sent');

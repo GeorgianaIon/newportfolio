@@ -1,5 +1,5 @@
 import { Box, Container, Grid,  } from '@mui/material'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Colors } from '../constants/Colors'
 import Navbar from './Navbar'
 import PageTitle from './PageTitle'
@@ -7,11 +7,11 @@ import {makeStyles} from 'tss-react/mui'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-const SecondaryLayout = ({
-  children
-}:{
+interface Props {
   children: React.ReactElement
-}) => {
+}
+
+const SecondaryLayout: FunctionComponent<Props> = ({children}) => {
   const { classes } = useStyles();
   const router = useRouter();
 
