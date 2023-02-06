@@ -5,8 +5,8 @@ import { makeStyles } from 'tss-react/mui'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Colors } from '../constants/Colors'
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import sgMail from "@sendgrid/mail"
-import { maxWidth } from '@mui/system';
+import emailjs from 'emailjs-com';
+import theme from '../src/theme';
 
 
 interface EmailData {
@@ -25,21 +25,17 @@ const {
   mode: "onChange",
 });
 
-const submit: SubmitHandler<EmailData> = async (data: EmailData) => {
-  console.log(data);
-  try {
-    const response = await fetch('/api/send-mail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    const result = await response.json();
-    console.log('RESULT:', result);
-  } catch (error) {
-    console.log(error)
-  } 
+const submit: SubmitHandler<EmailData> = async (data: EmailData, event) => {
+  emailjs.send(process.env.MY_SERVICE_ID || '', 
+  process.env.MY_TEMPLATE_ID || '', 
+  {...data}, 
+  process.env.MY_USER_ID || '')
+  .then((result) => {
+      console.log(result) 
+  }, (error) => {
+      console.log(error.text);
+  });
+
 };
 
   return (
@@ -132,13 +128,21 @@ const useStyles = makeStyles()(() => ({
   },
   callForAction:{
     padding: '3rem 4.3rem',
+    '@media (min-height: 1166px) and (min-width: 1200px)': {
+    height: '84vh'
+    },
+    [theme.breakpoints.down('mobileScreen')]: {
+      padding: '3rem 1rem',
+    }
   },
   form:{
 
   },
   contactFormContainer:{
     padding: '1.9rem 3.4rem',
-    // height: '80vh'
+    [theme.breakpoints.down('mobileScreen')]: {
+      padding: '1.9rem 1rem',
+    }
   },
   input:{},
   textarea:{},
@@ -152,7 +156,10 @@ const useStyles = makeStyles()(() => ({
   text:{
     margin: '5% 0',
     maxWidth: '70%',
-    lineHeight: 1.6
+    lineHeight: 1.6,
+    [theme.breakpoints.down('smallerScreen')]: {
+      maxWidth: '100%',
+    }
   },
   formText: {
     margin: '1rem 0',
@@ -169,7 +176,7 @@ const useStyles = makeStyles()(() => ({
      fontSize: '2.5vh'
   },
   textFieldHeight: {
-    height: '7vh',
+    // height: '7vh',
   },
   fieldContainer: {
     '@media (min-height: 1000px)': {

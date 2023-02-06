@@ -13,7 +13,7 @@ interface ModalProps {
   selectedProject: number;
 }
 
-const DesktopProjectModal:FunctionComponent<ModalProps> = ({isVisibile, toggleModal, selectedProject}) => {
+const DesktopProjectModal: FunctionComponent<ModalProps> = ({isVisibile, toggleModal, selectedProject}) => {
   const { classes } = useStyles();
 
   return (
