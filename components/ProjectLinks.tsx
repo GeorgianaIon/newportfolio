@@ -17,11 +17,12 @@ const ProjectLinks: FunctionComponent<ProjectLinksProps> = ({github, demo}) => {
         Github
       </Link>
     </Grid>
+    {!(demo as string === '') && 
     <Grid item xl={1} lg={2} md>
       <Link href={demo as string}>
         Demo
       </Link>
-    </Grid>
+    </Grid>}
   </Grid>
   )
 }
