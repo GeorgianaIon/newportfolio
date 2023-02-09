@@ -7,11 +7,12 @@ import DesktopProjectModal from '../components/DesktopProjectModal'
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from 'tss-react/mui';
 import { AnimatePresence } from 'framer-motion'
+import MobileProjectInfo from '../components/MobileProjectInfo'
 
 const Projects: NextPage = () => {
   const theme = useTheme(); 
   const {classes} = useStyles();
-  const project = useRef<number>(0);
+  const projectSelected = useRef<number>(0);
   const [desktopProjectInfo, setDesktopProjectInfo] = useState(false);
   const [mobileProjectInfo, setMobileProjectInfo] = useState(false);
 
@@ -20,12 +21,12 @@ const Projects: NextPage = () => {
   const toggleMobileModal = () => setMobileProjectInfo(curr => !curr);
 
   const toggleSelectedProjectDesktop = (index: number) => {
-    project.current = index;
+    projectSelected.current = index;
     toggleDesktopModal();
   }
 
   const toggleSelectedProjectMobile = (index: number) => {
-    project.current = index;
+    projectSelected.current = index;
     toggleMobileModal();
   }
 
@@ -36,14 +37,13 @@ const Projects: NextPage = () => {
 
   return (
     <Box>
-      <AnimatePresence
-      >
+      <AnimatePresence>
         {
           desktopProjectInfo && 
             <DesktopProjectModal
               isVisibile={desktopProjectInfo}
               toggleModal={toggleDesktopModal}
-              selectedProject={project.current}
+              selectedProject={projectSelected.current}
             />
         }
       </AnimatePresence>
@@ -52,6 +52,7 @@ const Projects: NextPage = () => {
       >
           {
             myProjects.map((project, index) =>
+            <>
                 <ProjectCard
                   key={project.name + project.pictures[0]}
                   name={project.name}
@@ -64,7 +65,21 @@ const Projects: NextPage = () => {
                     : () => toggleSelectedProjectDesktop(index)
                   }
                 />
+              <AnimatePresence>
+                  {mobileProjectInfo && projectSelected.current === index &&
+                    <div >
+                      <MobileProjectInfo
+                        selectedProject={projectSelected.current}
+                      />
+
+                    </div>
+                  }
+              </AnimatePresence>
+                  </>
+
+                
           )}
+
       </div>
     </Box>
   )
