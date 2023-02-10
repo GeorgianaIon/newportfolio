@@ -43,7 +43,7 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData, event) => {
       
       <Grid item container xs={12} sm={12} md={12} lg={6} className={classes.callForAction}>
         <div>
-            <Typography variant="h1" className={classes.title}>Let's join forces</Typography>
+            <Typography variant="h1" className={classes.title}>Let&apos;s join forces</Typography>
             <Typography variant="h5" className={classes.text}>Please feel free to reach out to me if you have any feedback on my work or are interested in collaborating.</Typography>
             <Typography variant="h5" className={classes.text}>I look forward to hearing from you.</Typography>
         </div>
