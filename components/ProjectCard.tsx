@@ -29,7 +29,7 @@ const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pic
     >
   
 
-      <Box className={classes.projectCard} style={isOpen ? {minHeight: '10rem'} : {}} >
+      <Box className={classes.projectCard}  >
         {
           type === "TABLET" && <TabletProjectPictures pictures={pictures} />
         }
@@ -82,7 +82,8 @@ const useStyles = makeStyles()(() => ({
   projectCard:{
     background: Colors.white,
     position:'relative',
-    minHeight:'90%',
+    // minHeight:'90%',
+    minHeight: '10rem',
     borderRadius: '1rem',
     overflow:'hidden',
     marginTop: '1.5rem',
