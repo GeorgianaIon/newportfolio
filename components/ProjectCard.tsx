@@ -29,7 +29,7 @@ const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pic
     >
   
 
-      <Box className={classes.projectCard} style={isOpen ? {minHeight: '9rem'} : {}}>
+      <Box className={classes.projectCard} style={isOpen ? {minHeight: '10rem'} : {}} >
         {
           type === "TABLET" && <TabletProjectPictures pictures={pictures} />
         }
@@ -37,7 +37,7 @@ const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pic
           type === "MOBILE" && <MobileProjectPictures pictures={pictures} />
         }
       </Box>
-        
+
       { 
       !isOpen &&
       <Box mt={1} 
@@ -50,12 +50,9 @@ const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pic
 
       <AnimatePresence>
         {isOpen &&
-          <div >
             <MobileProjectInfo
               selectedProject={selectedProject}
             />
-
-          </div>
         }
       </AnimatePresence>
     </Container>
@@ -85,13 +82,12 @@ const useStyles = makeStyles()(() => ({
   projectCard:{
     background: Colors.white,
     position:'relative',
-    // height:'90%',
-    minHeight: '90%',
+    minHeight:'90%',
     borderRadius: '1rem',
     overflow:'hidden',
     marginTop: '1.5rem',
-    zIndex:1,
     boxShadow: '0 0 0.5rem 0.1rem rgba(0,0,0,0.2)',
+    zIndex: 1
 
   },
 }));

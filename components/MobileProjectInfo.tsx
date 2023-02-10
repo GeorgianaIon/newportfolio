@@ -57,6 +57,7 @@ const useStyles = makeStyles()((theme) => ({
     backgroundColor: Colors.darkPurple,
     padding: theme.spacing(2),
     marginTop:'-1rem',
+    
   },
   description: {
     textAlign: 'justify',
