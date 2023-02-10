@@ -5,17 +5,22 @@ import { Colors } from '../constants/Colors';
 import theme from '../src/theme';
 import TabletProjectPictures from './TabletProjectPictures';
 import MobileProjectPictures from './MobileProjectPictures';
+import { AnimatePresence } from 'framer-motion';
+import MobileProjectInfo from './MobileProjectInfo';
 
 interface IProjectCard {
   indexOfProject: number;
   name: string;
   pictures: string[];
   type:string;
+  mobileProjectInfo: boolean;
+  selectedProject: number;
   onClick(index:number): void;
 }
 
-const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pictures, type, onClick}) => {
+const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pictures, type, selectedProject, mobileProjectInfo, onClick}) => {
   const { classes } = useStyles();
+  let isOpen = (mobileProjectInfo && selectedProject === indexOfProject)
 
   return (
     <Container
@@ -24,23 +29,35 @@ const ProjectCard: FunctionComponent<IProjectCard> = ({indexOfProject, name, pic
     >
   
 
-      <Box className={classes.projectCard}>
+      <Box className={classes.projectCard} style={isOpen ? {minHeight: '9rem'} : {}}>
         {
           type === "TABLET" && <TabletProjectPictures pictures={pictures} />
         }
         {
           type === "MOBILE" && <MobileProjectPictures pictures={pictures} />
         }
-
       </Box>
         
+      { 
+      !isOpen &&
       <Box mt={1} 
       >
         <Typography variant="h4">
           {name}
         </Typography>
       </Box>
+     } 
 
+      <AnimatePresence>
+        {isOpen &&
+          <div >
+            <MobileProjectInfo
+              selectedProject={selectedProject}
+            />
+
+          </div>
+        }
+      </AnimatePresence>
     </Container>
   )
 }
@@ -68,18 +85,15 @@ const useStyles = makeStyles()(() => ({
   projectCard:{
     background: Colors.white,
     position:'relative',
-    height:'90%',
+    // height:'90%',
+    minHeight: '90%',
     borderRadius: '1rem',
     overflow:'hidden',
     marginTop: '1.5rem',
+    zIndex:1,
+    boxShadow: '0 0 0.5rem 0.1rem rgba(0,0,0,0.2)',
 
   },
-  mobileLowerPicture:{
-
-  },
-  mobileUpperPicture:{
-
-  }
 }));
 
 

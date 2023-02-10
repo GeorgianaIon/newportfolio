@@ -31,9 +31,6 @@ const Projects: NextPage = () => {
   }
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  // const tablet = useMediaQuery(theme.breakpoints.down('md'));
-  // const laptop = useMediaQuery(theme.breakpoints.down('lg'));
-  // const desktop = useMediaQuery(theme.breakpoints.up('xl'));
 
   return (
     <Box>
@@ -48,38 +45,24 @@ const Projects: NextPage = () => {
         }
       </AnimatePresence>
 
-      <div className={classes.projectCardContainer}
-      >
-          {
-            myProjects.map((project, index) =>
-            <>
-                <ProjectCard
-                  key={project.name + project.pictures[0]}
-                  name={project.name}
-                  pictures={project.pictures}
-                  type={project.type}
-                  indexOfProject = {index}
-                  onClick={ 
-                    isMobile 
-                    ? () => toggleSelectedProjectMobile(index)
-                    : () => toggleSelectedProjectDesktop(index)
-                  }
-                />
-              <AnimatePresence>
-                  {mobileProjectInfo && projectSelected.current === index &&
-                    <div >
-                      <MobileProjectInfo
-                        selectedProject={projectSelected.current}
-                      />
-
-                    </div>
-                  }
-              </AnimatePresence>
-                  </>
-
-                
-          )}
-
+      <div className={classes.projectCardContainer}>
+      {
+        myProjects.map((project, index) =>
+          <ProjectCard
+            key={project.name + project.pictures[0]}
+            name={project.name}
+            pictures={project.pictures}
+            type={project.type}
+            indexOfProject = {index}
+            mobileProjectInfo={mobileProjectInfo}
+            selectedProject={projectSelected.current}
+            onClick={ 
+              isMobile 
+              ? () => toggleSelectedProjectMobile(index)
+              : () => toggleSelectedProjectDesktop(index)
+            }
+          />
+      )}
       </div>
     </Box>
   )
