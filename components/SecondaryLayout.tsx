@@ -18,7 +18,7 @@ const SecondaryLayout: FunctionComponent<Props> = ({children}) => {
   return (
     <>
     <Head>
-    <title>Portfolio</title>
+    <title>Georgiana's Portfolio</title>
     </Head>
     <Grid container
     className={classes.secondaryLayoutContainer}

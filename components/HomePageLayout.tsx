@@ -15,7 +15,7 @@ const HomePageLayout: FunctionComponent<Props> = ({children}) => {
   return (
     <>
     <Head>
-    <title>Portfolio</title>
+    <title>Georgiana's Portfolio</title>
     </Head>
     <Grid container className={classes.body}>
       <Grid item container className={classes.mainContainer}>
