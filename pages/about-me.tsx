@@ -53,9 +53,11 @@ const useStyles = makeStyles()(() => ({
   },
   imageContainer:{
     position: 'relative',
-    minHeight: '85vh',
     [theme.breakpoints.down('md')]:{
       minHeight: '60vh',
+    },
+    '@media(min-height: 1000px)':{
+      minHeight: '85vh',
     }
 
   },
@@ -70,6 +72,7 @@ const useStyles = makeStyles()(() => ({
     margin: '5% 0',
   },
   title: {
+    paddingTop: '1rem',
     [theme.breakpoints.down('lg')]:{
       fontSize: '4.3rem',
     },

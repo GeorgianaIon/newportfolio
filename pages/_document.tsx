@@ -18,6 +18,9 @@ export default class MyDocument extends Document {
           />
           <meta name="emotion-insertion-point" content="" />
           {(this.props as any).emotionStyleTags}
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,400&display=swap" rel="stylesheet"/>
         </Head>
         <body>
           <Main />
