@@ -159,7 +159,11 @@ const useStyles = makeStyles()(() => ({
         width: '100%',
         [theme.breakpoints.up('ultraWide')]:{
           height: '20rem',
-        }
+        },
+        [theme.breakpoints.down('lg')]:{
+          borderRadius: '0 1.25rem 0 0',
+  
+          }
       },
       profilePic: {
         borderRadius: '50%',
@@ -218,6 +222,10 @@ const useStyles = makeStyles()(() => ({
         borderRadius: '1.25rem 0 0 1.25rem',
         flexDirection: 'column',
         display: 'flex',
+        [theme.breakpoints.down('lg')]:{
+        borderRadius: '0 1.25rem 1.25rem 0',
+
+        }
       },
     }));
 

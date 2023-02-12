@@ -122,7 +122,7 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData, event) => {
           </Grid>
 
           {showConfirmation && 
-            <Grid item xs={6} sm={6} md={6} lg={6} className={classes.confirmationMessage}>
+            <Grid item xs={12} sm={12} md={6} lg={6} className={classes.confirmationMessage}>
               <Typography variant="h5">Message sent successfully!</Typography>
             </Grid>
           }
