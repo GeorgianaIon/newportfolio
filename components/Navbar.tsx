@@ -12,7 +12,7 @@ interface Links {
   }
 
   interface Props {
-    className: string;
+    className?: string;
   }
   
   const Navbar: FunctionComponent<Props> = ({className}) => {
