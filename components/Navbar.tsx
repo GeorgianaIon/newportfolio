@@ -11,11 +11,11 @@ interface Links {
     link: string
   }
 
-const Navbar = ({
-  className
-}:{
-  className?:string
-}) => {
+  interface Props {
+    className: string;
+  }
+  
+  const Navbar: FunctionComponent<Props> = ({className}) => {
     const isTabletScreen=useMediaQuery(theme.breakpoints.down('sm'));
 
     const { classes } = useStyles();
@@ -52,7 +52,7 @@ const Navbar = ({
       className={classes.menuDrawer}
       anchor="right"
       open={activeMenu}
-      onClose={toggleActiveMenu} >
+      onClick={toggleActiveMenu} >
         <Menu />
       </Drawer>
     </>
@@ -86,9 +86,7 @@ const useStyles = makeStyles()(() => ({
     alignItems:'center',
     justifyContent:'end',
     height: '4rem',
-    // ':hover':{
-    //     color: Colors.gray
-    // },
+
 },
   activeHamburger: {
     width: "1.6rem",

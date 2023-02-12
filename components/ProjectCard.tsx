@@ -89,7 +89,7 @@ const useStyles = makeStyles()(() => ({
     boxShadow: '0 0 0.5rem 0.1rem rgba(0,0,0,0.2)',
     zIndex: 1,
     [theme.breakpoints.down('smallerScreen')]: {
-      minHeight:'8rem',
+      minHeight:'9.2rem',
     },
   },
 }));

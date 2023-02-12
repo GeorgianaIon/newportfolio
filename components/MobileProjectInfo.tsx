@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Modal, Typography, useMediaQuery } from '@mui/material';
 import Link from 'next/link';
 import React, { FunctionComponent } from 'react'
 import { makeStyles } from 'tss-react/mui'
@@ -6,6 +6,7 @@ import { Colors } from '../constants/Colors';
 import { myProjects } from '../constants/MyProjects'
 import ProjectLinks from './ProjectLinks';
 import { motion } from 'framer-motion';
+import theme from '../src/theme';
 
 interface Props {
   selectedProject: number;
@@ -14,13 +15,14 @@ interface Props {
 const MobileProjectInfo: FunctionComponent<Props> = ({selectedProject}) => {
 
   const { classes } = useStyles();
+const isMobile = useMediaQuery(theme.breakpoints.down('smallerScreen'))
 
   return (
    <motion.div
    className={classes.infoContainer}
    initial={{opacity: 0, y: '-25%'}}
    animate={{opacity: 1, y: 0}}
-   exit={{opacity: 0, y: '-25%'}}
+   exit={{opacity: 0, y: isMobile ? '-10rem' : '-25%'}}
    transition={{ 
     opacity:{
       duration:0.5,
@@ -57,7 +59,7 @@ const useStyles = makeStyles()((theme) => ({
     backgroundColor: Colors.darkPurple,
     padding: theme.spacing(2),
     marginTop:'-1rem',
-    
+    borderRadius: '0 0 1.25rem 1.25rem',
   },
   description: {
     textAlign: 'justify',

@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import { NextPage } from 'next'
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from 'tss-react/mui'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Colors } from '../constants/Colors'
@@ -17,9 +17,11 @@ interface EmailData {
 
 const Contact: NextPage = () => {
 const { classes } = useStyles();
+const [showConfirmation, setShowConfirmation] = useState(false);
 const {
   register,
   handleSubmit,
+  reset,
   formState: { errors },
 } = useForm<EmailData>({
   mode: "onChange",
@@ -36,6 +38,9 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData, event) => {
       console.log(error.text);
   });
 
+  reset();
+  setShowConfirmation(true);
+  setTimeout(() => setShowConfirmation(false), 3000); // Show for 3 seconds
 };
 
   return (
@@ -115,6 +120,12 @@ const submit: SubmitHandler<EmailData> = async (data: EmailData, event) => {
           <Grid item style={{margin: 'auto 0'}}>
             <Button type="submit" variant="contained" startIcon={<SendRoundedIcon />} className={classes.button}>Send</Button>
           </Grid>
+
+          {showConfirmation && 
+            <Grid item xs={6} sm={6} md={6} lg={6} className={classes.confirmationMessage}>
+              <Typography variant="h5">Message sent successfully!</Typography>
+            </Grid>
+          }
         </form>
         </Grid>
 
@@ -182,6 +193,15 @@ const useStyles = makeStyles()(() => ({
     '@media (min-height: 1000px)': {
       margin: '5% 0'
     }
+  },
+  confirmationMessage:{
+    padding: '1rem',
+    backgroundColor: Colors.green,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '1rem',
+    marginTop: '2rem',
   }
 }));
 

@@ -102,6 +102,9 @@ const useStyles = makeStyles()(() => ({
     backgroundSize: '64%',
     backgroundPosition: 'bottom right',
     borderRadius: '0 1rem 1rem 0',
+    [theme.breakpoints.down('md')]:{
+      borderRadius: '0 0 1rem 1rem',
+    }
 
   },
   title: {

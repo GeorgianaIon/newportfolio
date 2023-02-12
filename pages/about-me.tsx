@@ -54,9 +54,9 @@ const useStyles = makeStyles()(() => ({
   imageContainer:{
     position: 'relative',
     [theme.breakpoints.down('md')]:{
-      minHeight: '60vh',
+      minHeight: '50vh',
     },
-    '@media(min-height: 1000px)':{
+    '@media(min-height: 1000px) and (min-width: 900px)':{
       minHeight: '85vh',
     }
 
