@@ -7,7 +7,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { makeStyles } from "tss-react/mui";
 import { Colors } from "../constants/Colors";
 import DownloadIcon from '@mui/icons-material/Download';
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion"
 import theme from "../src/theme";

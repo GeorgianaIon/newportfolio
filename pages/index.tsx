@@ -54,13 +54,11 @@ const Home: NextPage = () => {
 
                 <Grid item  xs={12} sm={12} md={12} lg={12} className={classes.skillsContainer}>
                     {skillsArray.map(({image, title}, index) => (
-                  // <Grid item container xs={2} sm={2} md={2} lg={2} className={classes.skillCard}>
                     <SkillCard
                       key={index}
                       skillImage={image}
                       skillTitle={title} 
                       />
-                  //  </Grid>
                       ))}
                 </Grid>
 
