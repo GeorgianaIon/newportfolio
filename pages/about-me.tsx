@@ -105,7 +105,9 @@ const useStyles = makeStyles()(() => ({
     display: 'flex',
     justifyContent: 'end',
     padding: '0 1rem 1rem 0',
-
+    [theme.breakpoints.down('small480')]:{
+      justifyContent: 'center',
+    }
   },
   nameContainer: {
     position: 'absolute',
