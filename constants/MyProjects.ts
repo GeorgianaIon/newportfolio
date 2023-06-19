@@ -86,7 +86,7 @@ export const myProjects: IProject[] = [
     description: Strings.bestMoviesDescription,
     techStack: [tech.React, tech.TypeScript, tech.JavaSB],
     github: 'https://github.com/SEP6-VIA/SEP6',
-    demo: 'https://www.youtube.com/watch?v=ZCzcuGEvVQ8',
+    demo: 'https://sep6.tomondre.com/',
     type: 'TABLET',
   },
 ];
