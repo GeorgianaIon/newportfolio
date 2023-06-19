@@ -30,6 +30,7 @@ const tech = {
   SQL: 'SQL',
   C: 'C',
   C_Sharp: 'C#',
+  Unity: 'Unity'
 }
 
 const sampleTechStack = [tech.React, tech.TypeScript, tech.JavaScript]
@@ -72,12 +73,12 @@ export const myProjects: IProject[] = [
     type: 'TABLET',
   },
   {
-    name: 'To Do List',
-    pictures: ['/images/project-images/todo-1.png', '/images/project-images/todo-2.png'],
-    description: Strings.todoDescription,
-    techStack: [tech.C_Sharp],
-    github: 'https://github.com/GeorgianaIon/todo-app',
-    demo: '',
+    name: 'Tower of Gato',
+    pictures: ['/images/project-images/gato-1.png', '/images/project-images/gato-2.png'],
+    description: Strings.gatoDescription,
+    techStack: [tech.C_Sharp, tech.Unity],
+    github: 'https://github.com/RealFoXsTeRDOTA/GMD1',
+    demo: 'https://realfoxsterdota.github.io/GMD1/',
     type: 'TABLET',
   },
   {
