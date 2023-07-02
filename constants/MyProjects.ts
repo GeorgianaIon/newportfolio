@@ -86,7 +86,7 @@ export const myProjects: IProject[] = [
     pictures: ['/images/project-images/best-movies-1.png', '/images/project-images/best-movies-2.png'],
     description: Strings.bestMoviesDescription,
     techStack: [tech.React, tech.TypeScript, tech.JavaSB],
-    github: 'https://github.com/SEP6-VIA/SEP6',
+    github: 'https://github.com/GeorgianaIon/SEP6',
     demo: 'https://sep6.tomondre.com/',
     type: 'TABLET',
   },
