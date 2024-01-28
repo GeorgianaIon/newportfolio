@@ -92,7 +92,6 @@ const Home: NextPage = () => {
             lg={4}
             className={classes.purpleLaptopContainer}
           >
-            {/* gif  */}
             <img
               className={classes.purpleLaptop}
               src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif?cid=ecf05e47lsu67cnf1684060m1u2eyjnzrx914iko5dg8g6yr&rid=giphy.gif&ct=s"

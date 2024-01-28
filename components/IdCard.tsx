@@ -86,7 +86,19 @@ const IdCard = () => {
                 download
                 className={classes.downloadCVText}
               >
-                Download CV
+                CV
+              </a>
+            </Typography>
+          </div>
+          <div className={classes.contact}>
+            <DownloadIcon className={classes.icon} />
+            <Typography variant="h6">
+              <a
+                href="/pdfs/BachelorDiploma.pdf"
+                download
+                className={classes.downloadCVText}
+              >
+                Bachelor Diploma
               </a>
             </Typography>
           </div>

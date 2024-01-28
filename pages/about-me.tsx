@@ -32,7 +32,7 @@ const About: NextPage = () => {
             Georgiana Ion
           </Typography>
           <Typography variant="h5" className={classes.frontendText}>
-            FRONTEND DEVELOPER
+            SOFTWARE DEVELOPER
           </Typography>
         </div>
       </Grid>
@@ -56,14 +56,14 @@ const About: NextPage = () => {
         </Grid>
         <Grid item>
           <Typography variant="h4" className={classes.text}>
-            I am a 22-year-old Romanian international student in Denmark
-            studying software engineering.
+            I am a 22-year-old Romanian international graduate in Denmark with a
+            Bachelor in Software Engineering.
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant="h4" className={classes.text}>
             {" "}
-            I am passionate about frontend development and have completed a
+            I am passionate about software development and have completed a
             six-month internship in the field. I am optimistic, hard working and
             always looking to improve my skills.
           </Typography>
