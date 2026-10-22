@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "design",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4100",
+        "--directory",
+        "/private/tmp/claude-501/-Users-raulchirigut-dev-newportfolio/0245b729-bf6d-48a0-9d5f-04cae5a8ee28/scratchpad/desktop"
+      ],
+      "port": 4100
+    }
+  ]
+}
