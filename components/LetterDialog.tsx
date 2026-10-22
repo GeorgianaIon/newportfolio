@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { site } from "@/lib/site";
 import { Daisy, Fern, Sparkle, Squiggle } from "./Decor";
 
@@ -29,10 +30,39 @@ const CLOSE_TIME = 260;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// TODO: deliver the letter (e.g. a Server Action that emails it). Until then every letter "arrives".
+// Delivered by EmailJS. The template's variables are {{name}}, {{email}}, {{subject}} and {{message}}.
+// NEXT_PUBLIC_ values are inlined at build time, so they must be read by their full names.
+const emailjsConfig = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+};
+
+const DELIVERY_FAILED = `Your letter couldn't be sent. Please try again, or write to ${site.email}.`;
+
 async function deliver(draft: Draft): Promise<Delivery> {
-  void draft;
-  return { ok: true };
+  const { serviceId, templateId, publicKey } = emailjsConfig;
+  if (!serviceId || !templateId || !publicKey) {
+    console.error("EmailJS is not configured: set the NEXT_PUBLIC_EMAILJS_* environment variables.");
+    return { ok: false, error: DELIVERY_FAILED };
+  }
+  try {
+    await emailjs.send(
+      serviceId,
+      templateId,
+      {
+        name: draft.name.trim(),
+        email: draft.email.trim(),
+        subject: draft.subject.trim() || "A letter from your portfolio",
+        message: draft.message.trim(),
+      },
+      { publicKey },
+    );
+    return { ok: true };
+  } catch (error) {
+    console.error("EmailJS delivery failed", error);
+    return { ok: false, error: DELIVERY_FAILED };
+  }
 }
 
 const HEART = "M10 17 C 3 12, 0.5 7, 3.5 4 C 6 1.6, 9 3, 10 5.4 C 11 3, 14 1.6, 16.5 4 C 19.5 7, 17 12, 10 17 Z";
