@@ -1361,11 +1361,16 @@ html:has(dialog.letter[open]) {
   pointer-events: none;
 }
 
+/* LetterDialog.tsx sets --fit to shrink the envelope into the window, and --fit-gap to pull up
+   the space the shrink leaves below it, so nothing scrolls. */
 .env {
+  --env-mb: 56px;
   position: relative;
   width: var(--env-w);
   max-width: calc(100% - 32px);
-  margin: 72px auto 80px;
+  margin: 48px auto calc(var(--env-mb) - var(--fit-gap, 0px));
+  transform: scale(var(--fit, 1));
+  transform-origin: 50% 0;
 }
 .env-plant {
   position: absolute;
@@ -1481,7 +1486,7 @@ html:has(dialog.letter[open]) {
   padding: 0;
   line-height: 32px;
   background: transparent repeating-linear-gradient(to bottom, transparent 0 31px, #eed6cc 31px 32px);
-  resize: vertical;
+  resize: none;
 }
 .env-field input:focus {
   border-bottom-color: var(--rust);
@@ -1913,7 +1918,8 @@ html:has(dialog.letter[open]) {
     width: auto;
     max-width: none;
     align-self: stretch;
-    margin: 132px 16px 32px;
+    --env-mb: 24px;
+    margin: 96px 16px calc(var(--env-mb) - var(--fit-gap, 0px));
   }
   .env-letter {
     margin: 0 12px;
@@ -2052,6 +2058,8 @@ html:has(dialog.letter[open]) {
 .case-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Each card hugs its screenshot, whose proportions differ. */
+  align-items: start;
   gap: 32px;
   margin: 48px 0;
 }

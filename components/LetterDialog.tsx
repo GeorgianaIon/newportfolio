@@ -27,6 +27,7 @@ const emptyDraft: Draft = { name: "", email: "", subject: "", message: "" };
 const SEAL_TIME = 1800;
 const GLIDE_TIME = 1000;
 const CLOSE_TIME = 260;
+const MIN_FIT = 0.6;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -70,6 +71,7 @@ const HEART = "M10 17 C 3 12, 0.5 7, 3.5 4 C 6 1.6, 9 3, 10 5.4 C 11 3, 14 1.6, 
 export function LetterDialog() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const backRef = useRef<HTMLButtonElement>(null);
+  const envRef = useRef<HTMLDivElement>(null);
   const envBackRef = useRef<HTMLDivElement>(null);
   const sentEnvRef = useRef<HTMLDivElement>(null);
   // Where the sealed envelope sat on screen when it was swapped for the thank-you one.
@@ -124,6 +126,31 @@ export function LetterDialog() {
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
   }, [open]);
+
+  // Shrink the envelope so the whole letter fits the window without scrolling. Below MIN_FIT the
+  // text gets too small to read, so very short windows scroll instead.
+  useLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    const env = envRef.current;
+    if (!dialog || !env || stage === "sent") return;
+    const fit = () => {
+      if (!dialog.open) return;
+      const style = getComputedStyle(env);
+      const room = dialog.clientHeight - parseFloat(style.marginTop) - parseFloat(style.getPropertyValue("--env-mb"));
+      const scale = Math.max(MIN_FIT, Math.min(1, room / env.offsetHeight));
+      env.style.setProperty("--fit", String(scale));
+      env.style.setProperty("--fit-gap", `${env.offsetHeight * (1 - scale)}px`);
+    };
+    fit();
+    // The letter grows when the signature wraps or an error appears.
+    const observer = new ResizeObserver(fit);
+    observer.observe(env);
+    window.addEventListener("resize", fit);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", fit);
+    };
+  }, [openCount, stage]);
 
   // Glide the thank-you envelope from where the sealed one was into its own place.
   useLayoutEffect(() => {
@@ -205,7 +232,7 @@ export function LetterDialog() {
         </div>
 
         {stage !== "sent" ? (
-          <div className="env" key={openCount}>
+          <div className="env" key={openCount} ref={envRef}>
             <span className="env-plant env-plant-left only-desktop" aria-hidden="true">
               <Fern width="90" height="200" stroke="#FFF8F3" strokeWidth="1.3" />
             </span>

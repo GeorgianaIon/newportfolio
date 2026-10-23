@@ -84,7 +84,7 @@ export const projects: Project[] = [
     description:
       "An IoT system that monitors noise, temperature, humidity and CO₂ on a pig farm, from sensors over LoRaWAN to an Android app.",
     tags: "Java · SQL · C",
-    image: { src: "/images/work/farmerama.jpg", alt: "Farmerama Android app screens", width: 1200, height: 900 },
+    image: { src: "/images/work/farmerama-phones.jpg", alt: "Farmerama Android app screens", width: 1200, height: 900 },
     links: [
       { label: "View on GitHub", href: "https://github.com/HolaSombreros/SEP4" },
       { label: "Demo", href: "https://www.youtube.com/watch?v=2tLJ5bo_oes" },

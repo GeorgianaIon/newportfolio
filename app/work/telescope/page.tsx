@@ -5,8 +5,8 @@ import { Contact, SiteFooter } from "@/components/Contact";
 import { Sparkle, Squiggle } from "@/components/Decor";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site, siteUrl } from "@/lib/site";
-import left from "@/public/images/project-images/bpr-left.png";
-import right from "@/public/images/project-images/bpr-right.png";
+import left from "@/public/images/project-images/telescope-1.png";
+import right from "@/public/images/project-images/telescope-2.png";
 
 const description =
   "Telescope is a real-time Kubernetes cluster management app built with TypeScript, React and Go for the Danish Business Authority as Georgiana Ion's bachelor project.";
@@ -89,11 +89,11 @@ export default function TelescopePage() {
           </p>
 
           <div className="case-gallery">
-            <figure className="card" style={{ margin: 0, transform: "rotate(-0.8deg)" }}>
-              <Image src={left} alt="Telescope dashboard listing Kubernetes clusters with their statuses" sizes="(max-width: 720px) 100vw, 380px" />
+            <figure className="card" style={{ margin: 0, transform: "rotate(-2.5deg)" }}>
+              <Image src={left} alt="Telescope welcome screen with a Get started button" sizes="(max-width: 720px) 100vw, 380px" />
             </figure>
-            <figure className="card" style={{ margin: 0, transform: "rotate(0.8deg)" }}>
-              <Image src={right} alt="Telescope cluster detail view with versions and live filters" sizes="(max-width: 720px) 100vw, 380px" />
+            <figure className="card" style={{ margin: 0, transform: "rotate(2deg) translateY(12px)" }}>
+              <Image src={right} alt="Telescope cluster overview with live filters and cluster statuses" sizes="(max-width: 720px) 100vw, 380px" />
             </figure>
           </div>
 
