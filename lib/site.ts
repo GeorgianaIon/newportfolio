@@ -17,7 +17,7 @@ export const site = {
   location: { city: "Timișoara", country: "Romania", countryCode: "RO" },
   cv: "/pdfs/GeorgianaIonCV.pdf",
   social: {
-    linkedin: "https://www.linkedin.com/in/georgiana-ion-84a888230/",
+    linkedin: "https://www.linkedin.com/in/georgianaion01/",
     github: "https://github.com/GeorgianaIon",
   },
 };
