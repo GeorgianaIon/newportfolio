@@ -338,8 +338,8 @@ export default function Home() {
             <div className="skills-col">
               <h2>Browse my toolbox</h2>
               <ul>
-                {toolbox.map((item, i) => (
-                  <li key={item}>{i === 0 ? <span className="highlight">{item}</span> : item}</li>
+                {toolbox.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
@@ -358,8 +358,8 @@ export default function Home() {
             <div className="skills-col">
               <h2>And the way I work</h2>
               <ul>
-                {workStyle.map((item, i) => (
-                  <li key={item}>{i === 0 ? <span className="highlight">{item}</span> : item}</li>
+                {workStyle.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
