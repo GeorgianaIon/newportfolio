@@ -1,9 +1,17 @@
-import { experience, projects, site, siteUrl, toolbox, workStyle } from "@/lib/site";
+import {
+  experience,
+  projects,
+  site,
+  siteUrl,
+  toolbox,
+  workStyle,
+} from "@/lib/site";
 
 // Plain-text profile for AI crawlers (https://llmstxt.org), built from the same data as the page.
 export const dynamic = "force-static";
 
-const absolute = (href: string) => (href.startsWith("/") ? `${siteUrl}${href}` : href);
+const absolute = (href: string) =>
+  href.startsWith("/") ? `${siteUrl}${href}` : href;
 
 function llmsTxt() {
   return `# ${site.name}
@@ -16,7 +24,6 @@ ${site.name} is a ${site.role.toLowerCase()} based in ${site.location.city}, ${s
 - Email: ${site.email}
 - LinkedIn: ${site.social.linkedin}
 - GitHub: ${site.social.github}
-- Notice period: 37 days
 
 ## Experience and education
 
