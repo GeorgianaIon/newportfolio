@@ -1280,7 +1280,9 @@ h3 {
   font-size: 16px;
 }
 .contact-social a {
+  display: inline-flex;
   color: var(--ink);
+  transition: color 0.2s;
 }
 .contact-social a:hover {
   color: var(--rust-dark);
