@@ -6,6 +6,10 @@ export const siteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000");
 
+// Google Drive file ID of the CV, served by the /cv route (from drive.google.com/file/d/<ID>/view).
+// Update the CV via Drive → File information → Manage versions so this ID stays the same.
+export const cvDriveId = "1joejehBOwaRjCzUt78y1UOFuP_NJP6A6";
+
 export const site = {
   name: "Georgiana Ion",
   role: "Software Developer",
@@ -15,7 +19,7 @@ export const site = {
     "Georgiana Ion is a full stack software developer from Timișoara, Romania, building modern web applications with React, Next.js, Vue, TypeScript and Laravel.",
   email: "ion.georgiana@hotmail.com",
   location: { city: "Timișoara", country: "Romania", countryCode: "RO" },
-  cv: "/pdfs/GeorgianaIonCV.pdf",
+  cv: "/cv",
   social: {
     linkedin: "https://www.linkedin.com/in/georgianaion01/",
     github: "https://github.com/GeorgianaIon",
